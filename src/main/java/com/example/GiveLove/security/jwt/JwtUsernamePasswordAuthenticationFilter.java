@@ -54,7 +54,6 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
                                             HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-        System.out.println(authResult.getPrincipal());
         String token = Jwts.builder()
            //     .setPayload(((UserDetail)authResult.getPrincipal()).getUsername())
                 .setSubject(authResult.getName())

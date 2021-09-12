@@ -12,6 +12,10 @@ import com.example.GiveLove.responseCode.SuccessCode;
 import com.example.GiveLove.security.jwt.JwtConfig;
 import com.example.GiveLove.services.UserService;
 import io.jsonwebtoken.Jwts;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +45,13 @@ public class AuthController {
 
 
 
+    @Operation(summary = "Create new account", description = "", tags = { "All" })
+    @ApiResponses(value = { @ApiResponse(responseCode = "2xx", description = "Successfull"),
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Forbidden"),
+            @ApiResponse(responseCode = "404", description = "Not found"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error") })
     @PostMapping("signup")
     public ResponseEntity<ResponseDTO> signUp(@Valid @RequestBody SignupDTO user) {
 
