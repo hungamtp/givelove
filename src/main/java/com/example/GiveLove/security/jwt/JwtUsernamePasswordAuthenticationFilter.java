@@ -1,6 +1,7 @@
 package com.example.GiveLove.security.jwt;
 
 import com.example.GiveLove.dto.authDTO.LoginDTO;
+import com.example.GiveLove.security.authentication.UserDetail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import lombok.AllArgsConstructor;
@@ -54,6 +55,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
         String token = Jwts.builder()
+           //     .setPayload(((UserDetail)authResult.getPrincipal()).getUsername())
                 .setSubject(authResult.getName())
                 .claim("authorities", authResult.getAuthorities())
                 .setIssuedAt(new Date())

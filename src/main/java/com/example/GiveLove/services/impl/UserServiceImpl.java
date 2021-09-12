@@ -30,4 +30,14 @@ public class UserServiceImpl implements UserService {
         Users savedUser = usersRepository.save(users);
         return savedUser;
     }
+
+    @Override
+    public Users findByUsername(String username) {
+
+       Optional<Users>user =Optional.ofNullable( usersRepository.findByUsername(username));
+        if(user.isPresent()){
+            throw new DuplicateKeyException(ErrorCode.USERNAME_NOT_AVAILABLE);
+        }
+        return  user.get();
+    }
 }
