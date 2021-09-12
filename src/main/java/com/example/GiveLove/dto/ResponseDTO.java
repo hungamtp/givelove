@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ResponseDTO {
-    private SuccessCode successCode;
+    private String successCode;
     private Object data;
-    private ErrorCode errorCode;
+    private String errorCode;
 }
