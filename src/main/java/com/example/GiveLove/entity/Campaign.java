@@ -20,6 +20,8 @@ public class Campaign {
     private Long id;
 
     private String name;
+    private String description;
+    private String image;
 
     private LocalDateTime startDate;
     private LocalDateTime endDate;
