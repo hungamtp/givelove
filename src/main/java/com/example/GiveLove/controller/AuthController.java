@@ -92,13 +92,11 @@ public class AuthController {
                     .signWith(secretKey)
                     .compact();
 
-            String defaultAvatar = "https://firebasestorage.googleapis.com/v0/b/timer-34f5a.appspot.com/"+
-                    "o/avatar%2Favatar%20default.png?alt=media&token=b12a3df6-93f5-4662-8628-e34c94817c9f";
             Users customer = userService.findByUsername(user.getUsername());
 
             LoginResponseDTO loginResponse = LoginResponseDTO.builder()
                     .avatar(customer.getAvatar() == null || customer.getAvatar().equals("")
-                            ? defaultAvatar : customer.getAvatar())
+                            ? null : customer.getAvatar())
                     .username(customer.getUsername())
                     .role(customer.getRole().getName())
                     .jwt("Bearer " + token)
