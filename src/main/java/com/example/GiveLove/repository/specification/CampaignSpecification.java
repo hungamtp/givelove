@@ -14,15 +14,6 @@ public class CampaignSpecification implements Specification<Campaign> {
 
     private SearchCriteria criteria;
 
-//    @Override
-//    public Specification<Campaign> and(Specification<Campaign> other) {
-//        return Specification.super.and(other);
-//    }
-//
-//    @Override
-//    public Specification<Campaign> or(Specification<Campaign> other) {
-//        return Specification.super.or(other);
-//    }
 
     @Override
     public Predicate toPredicate(Root<Campaign> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder builder) {
