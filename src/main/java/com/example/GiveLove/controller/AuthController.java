@@ -32,7 +32,7 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("auth/")
-@CrossOrigin
+@CrossOrigin(origins = "*", maxAge = 3600)
 @AllArgsConstructor
 public class AuthController {
 
@@ -61,7 +61,7 @@ public class AuthController {
                 .username(user.getUsername())
                 .password("{bcrypt}" + passwordEncoder.encode(user.getPassword()))
                 .email(user.getEmail())
-                .role(Role.builder().id(1L).build())
+                .role(Role.builder().id(2L).build())
                 .build();
 
         userService.save(customer);
