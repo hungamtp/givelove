@@ -86,7 +86,7 @@ public class AuthController {
         if(authenticate.isAuthenticated()){
             String token = Jwts.builder()
                     .setSubject(authentication.getName())
-                    .claim("authorities", authentication.getAuthorities())
+                    .claim("authorities", authenticate.getAuthorities())
                     .setIssuedAt(new Date())
                     .setExpiration(java.sql.Date.valueOf(LocalDate.now().plusDays(jwtConfig.getTokenExpirationAfterDays())))
                     .signWith(secretKey)

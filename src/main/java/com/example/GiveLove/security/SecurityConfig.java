@@ -26,6 +26,7 @@ import javax.crypto.SecretKey;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @AllArgsConstructor
+
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
