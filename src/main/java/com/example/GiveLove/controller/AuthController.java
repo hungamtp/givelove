@@ -80,7 +80,10 @@ public class AuthController {
                 user.getUsername(),
                 user.getPassword()
         );
-        if(authentication.isAuthenticated()){
+
+        Authentication authenticate = authenticationManager.authenticate(authentication);
+
+        if(authenticate.isAuthenticated()){
             String token = Jwts.builder()
                     .setSubject(authentication.getName())
                     .claim("authorities", authentication.getAuthorities())

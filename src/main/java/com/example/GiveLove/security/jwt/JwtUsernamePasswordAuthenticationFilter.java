@@ -1,7 +1,6 @@
 package com.example.GiveLove.security.jwt;
 
 import com.example.GiveLove.dto.authDTO.LoginDTO;
-import com.example.GiveLove.security.authentication.UserDetail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import lombok.AllArgsConstructor;
@@ -10,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.crypto.SecretKey;
 import javax.servlet.FilterChain;
@@ -64,6 +64,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
                 .compact();
 
         response.addHeader(jwtConfig.getAuthorizationHeader(), jwtConfig.getTokenPrefix() + token);
+
 
     }
 
