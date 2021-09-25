@@ -31,9 +31,7 @@ public class Users {
     @ManyToMany
     private List<Campaign> campaigns;
 
-    @OneToMany
+    @OneToMany(mappedBy = "secretaries")
     private List<Campaign> campaignList;
 
-    @OneToMany(mappedBy = "user")
-    private List<TransactionBlock> transactions;
 }

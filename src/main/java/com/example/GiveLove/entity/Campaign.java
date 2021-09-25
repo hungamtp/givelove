@@ -32,12 +32,9 @@ public class Campaign {
     @ManyToMany(mappedBy = "campaigns")
     private List<Users> sponsors;
 
-    @ManyToMany(mappedBy = "campaignList")
-    private List<Users> secretaries;
+    @ManyToOne
+    private Users secretaries;
 
     @OneToMany(mappedBy = "campaign")
     private List<ExpensesBlock> expenses;
-
-    @OneToMany(mappedBy = "campaign")
-    private List<TransactionBlock> transactions;
 }

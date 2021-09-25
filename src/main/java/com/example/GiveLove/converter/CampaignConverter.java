@@ -4,7 +4,6 @@ import com.example.GiveLove.dto.CampaignDTO;
 import com.example.GiveLove.dto.PageDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.ExpensesBlock;
-import com.example.GiveLove.entity.TransactionBlock;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -15,14 +14,9 @@ public class CampaignConverter {
 
 
     public CampaignDTO convertEntityToDTO(Campaign campaign){
-        long totalTransactionMoney =0;
         long totalExpensesMoney =0;
 
-        if(campaign.getTransactions().size() != 0){
-            totalTransactionMoney = campaign.getTransactions()
-                    .stream().mapToLong(TransactionBlock::getMoney)
-                    .sum();
-        }
+
 
         if(campaign.getExpenses().size() != 0){
             totalExpensesMoney = campaign.getExpenses()
@@ -40,7 +34,6 @@ public class CampaignConverter {
                 .location(campaign.getLocation())
                 .totalExpenses(totalExpensesMoney)
                 .remainMoney(totalExpensesMoney - totalExpensesMoney)
-                .total(totalTransactionMoney)
                 .build();
     }
 
