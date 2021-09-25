@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
             throw new DuplicateKeyException(ErrorCode.USERNAME_NOT_AVAILABLE);
         }
         Users savedUser = usersRepository.save(users);
+        savedUser.setPassword("");
         return savedUser;
     }
 
