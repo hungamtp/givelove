@@ -64,7 +64,7 @@ public class AuthController {
                 .role(Role.builder().id(2L).build())
                 .build();
 
-        userService.save(customer);
+        response.setData(userService.save(customer));
         response.setSuccessCode(SuccessCode.SIGN_UP_SUCCESS);
         return ResponseEntity.ok().body(response);
 
