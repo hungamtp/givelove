@@ -30,9 +30,9 @@ public class UserController {
 
     @GetMapping()
     @PreAuthorize("hasRole('Admin')")
-    public ResponseEntity<ResponseDTO> getAllUser(@RequestParam int page,
+    public ResponseEntity<ResponseDTO> getAllUser(@RequestParam("pageNum") int page,
+                                                  @RequestParam("pageSize") int size,
                                                   @RequestParam String sort,
-                                                  @RequestParam int size,
                                                   @RequestParam String search) {
         ResponseDTO response = new ResponseDTO();
 
