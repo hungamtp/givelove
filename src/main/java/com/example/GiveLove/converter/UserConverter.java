@@ -2,7 +2,6 @@ package com.example.GiveLove.converter;
 
 import com.example.GiveLove.dto.PageDTO;
 import com.example.GiveLove.dto.UserDTO;
-import com.example.GiveLove.entity.TransactionBlock;
 import com.example.GiveLove.entity.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
@@ -14,14 +13,10 @@ public class UserConverter {
 
     public UserDTO convertEntityToDTO(Users user){
 
-        Long totalDonateMoney = user.getTransactions()
-                .stream()
-                .mapToLong(TransactionBlock::getMoney)
-                .sum();
+
 
         return UserDTO.builder()
                 .id(user.getId())
-                .money(totalDonateMoney)
                 .username(user.getUsername())
                 .role(user.getRole().getName())
                 .email(user.getEmail())

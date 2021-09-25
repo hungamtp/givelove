@@ -13,11 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -30,10 +26,10 @@ public class CampaignController {
 
     @GetMapping
     @PreAuthorize("hasRole('Admin')")
-    public ResponseEntity<ResponseDTO> getAllCampaign(@Param("name") String name ,
-                                                      @Param("page") int page,
-                                                      @Param("size") int size ,
-                                                      @Param("sort") String sort ){
+    public ResponseEntity<ResponseDTO> getAllCampaign(@RequestParam("pageNum") int page,
+                                                      @RequestParam("pageSize") int size ,
+                                                      @RequestParam("sort") String sort,
+                                                      @RequestParam("name") String name  ){
 
         ResponseDTO response = new ResponseDTO();
 
