@@ -6,7 +6,8 @@ public class SuccessCode {
     public static final String LOGIN_SUCCESS = "LOGIN_SUCCESS";
     public static final String GET_CAMPAIGNS_SUCCESS = "GET_CAMPAIGNS_SUCCESS";
     public static final String GET_ALL_USER_SUCCESS = "GET_ALL_USER_SUCCESS";
-    public static final String UPDATE_ROLE_SEUCCESS = "UPDATE_ROLE_SEUCCESS";
+    public static final String UPDATE_ROLE_SUCCESS = "UPDATE_ROLE_SUCCESS";
+    public static final String ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
 
 
 

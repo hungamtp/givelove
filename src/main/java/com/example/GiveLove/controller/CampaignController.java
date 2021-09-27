@@ -57,4 +57,16 @@ public class CampaignController {
         response.setData(campaignService.getAllCampaign(pageable , spec));
         return ResponseEntity.ok().body(response);
     }
+
+
+    @PostMapping("/addMember")
+    public ResponseEntity<ResponseDTO> addMember(@RequestParam Long memberId ,
+                                                 @RequestParam Long campaignId){
+        ResponseDTO response = new ResponseDTO();
+
+        campaignService.addMemberToCampaign(memberId , campaignId);
+
+        response.setSuccessCode(SuccessCode.ADD_USER_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
 }

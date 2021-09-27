@@ -63,7 +63,7 @@ public class UserController {
     public ResponseEntity<ResponseDTO> updateRole(@PathVariable Long userId) {
         ResponseDTO response = new ResponseDTO();
         userService.updateRole(userId);
-        response.setSuccessCode(SuccessCode.UPDATE_ROLE_SEUCCESS);
+        response.setSuccessCode(SuccessCode.UPDATE_ROLE_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
 
