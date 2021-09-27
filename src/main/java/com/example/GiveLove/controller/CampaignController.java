@@ -2,18 +2,21 @@ package com.example.GiveLove.controller;
 
 
 import com.example.GiveLove.dto.ResponseDTO;
-import com.example.GiveLove.repository.specification.CampaignSpecification;
-import com.example.GiveLove.repository.specification.SearchCriteria;
+import com.example.GiveLove.entity.Campaign;
+import com.example.GiveLove.repository.specification.CampaignSpecificationBuilder;
 import com.example.GiveLove.responseCode.SuccessCode;
 import com.example.GiveLove.services.CampaignService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @RestController
@@ -29,18 +32,29 @@ public class CampaignController {
     public ResponseEntity<ResponseDTO> getAllCampaign(@RequestParam("pageNum") int page,
                                                       @RequestParam("pageSize") int size ,
                                                       @RequestParam("sort") String sort,
-                                                      @RequestParam("name") String name  ){
+                                                      @RequestParam("search") String search  ){
 
         ResponseDTO response = new ResponseDTO();
 
-        Pageable pageable = PageRequest.of(page , size , Sort.by(sort));
+        Pageable pageable = null;
+        if (sort.contains("ASC")) {
+            pageable = PageRequest.of(page, size, Sort.by(sort.replace("ASC", "")).ascending());
+        } else {
+            pageable = PageRequest.of(page, size, Sort.by(sort.replace("DES", "")).descending());
+        }
 
-        SearchCriteria searchCriteria = new SearchCriteria("name" , ":" , name);
+        CampaignSpecificationBuilder builder = new CampaignSpecificationBuilder();
+        Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+        Matcher matcher = pattern.matcher(search + ",");
 
-        CampaignSpecification specification = new CampaignSpecification(searchCriteria);
+        while (matcher.find()) {
+            builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+        }
+
+        Specification<Campaign> spec = builder.build();
 
         response.setSuccessCode(SuccessCode.GET_CAMPAIGNS_SUCCESS);
-        response.setData(campaignService.getAllCampaign(pageable , specification));
+        response.setData(campaignService.getAllCampaign(pageable , spec));
         return ResponseEntity.ok().body(response);
     }
 }
