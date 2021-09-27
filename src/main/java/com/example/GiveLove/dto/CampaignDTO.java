@@ -17,8 +17,8 @@ public class CampaignDTO {
     private String name;
     private String description;
     private String image;
+    private String state;
     private Long totalExpenses;
-    private Long remainMoney;
     private Long total;
     private String location;
     private LocalDate startDate;

@@ -33,7 +33,7 @@ public class CampaignConverter {
                 .startDate(campaign.getStartDate().toLocalDate())
                 .location(campaign.getLocation())
                 .totalExpenses(totalExpensesMoney)
-                .remainMoney(totalExpensesMoney - totalExpensesMoney)
+                .state(campaign.getState())
                 .build();
     }
 
