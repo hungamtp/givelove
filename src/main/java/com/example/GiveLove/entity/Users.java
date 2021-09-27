@@ -19,11 +19,12 @@ public class Users {
     private Long id;
 
     private String avatar;
-
     private String username;
     private String password;
     private String email;
-    private Long money;
+    private String phone;
+    private String fullName;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Role role;
