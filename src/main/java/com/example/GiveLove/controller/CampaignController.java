@@ -60,6 +60,7 @@ public class CampaignController {
 
 
     @PostMapping("/addMember")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<ResponseDTO> addMember(@RequestParam Long memberId ,
                                                  @RequestParam Long campaignId){
         ResponseDTO response = new ResponseDTO();
@@ -69,4 +70,18 @@ public class CampaignController {
         response.setSuccessCode(SuccessCode.ADD_USER_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
+
+    @PostMapping("/addDonator")
+    @PreAuthorize("hasRole('Admin')")
+    public ResponseEntity<ResponseDTO> addDonator(@RequestParam Long donatorId ,
+                                                 @RequestParam Long campaignId){
+        ResponseDTO response = new ResponseDTO();
+
+        campaignService.addMemberToCampaign(donatorId , campaignId);
+
+        response.setSuccessCode(SuccessCode.ADD_USER_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+
+
 }

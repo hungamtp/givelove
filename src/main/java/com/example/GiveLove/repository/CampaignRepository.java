@@ -13,5 +13,8 @@ public interface CampaignRepository extends JpaRepository<Campaign , Long> , Jpa
     @Query(value = "INSERT INTO users_campaign VALUES (?1 , ?2)" , nativeQuery = true)
     void addMemberToCampaign(Long memberId ,Long campaignId);
 
+    @Query(value = "INSERT INTO users_campaigns VALUES (?1 , ?2)" , nativeQuery = true)
+    void addDonatorToCampaign(Long donatorId ,Long campaignId);
+
 
 }

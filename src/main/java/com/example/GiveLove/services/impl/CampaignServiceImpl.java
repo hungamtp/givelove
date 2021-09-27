@@ -54,5 +54,20 @@ public class CampaignServiceImpl implements CampaignService {
         campaignRepository.addMemberToCampaign(memberId , campaignId);
     }
 
+    public void addDonatorToCampaign (Long donatorId , Long campaignId ){
+
+        usersRepository.findById(donatorId).orElseThrow(() ->{
+            throw  new IllegalStateException(ErrorCode.USER_NOT_FOUND);
+        });
+
+
+        campaignRepository.findById(campaignId).orElseThrow(() ->{
+            throw new IllegalStateException(ErrorCode.CAMPAIGN_NOT_FOUND);
+        });
+
+
+        campaignRepository.addMemberToCampaign(donatorId , campaignId);
+    }
+
 
 }
