@@ -7,4 +7,6 @@ import org.springframework.data.jpa.domain.Specification;
 public interface CampaignService {
 
     PageDTO getAllCampaign(Pageable pageable , Specification specification);
+
+    void addMemberToCampaign (Long memberId , Long campaignId );
 }

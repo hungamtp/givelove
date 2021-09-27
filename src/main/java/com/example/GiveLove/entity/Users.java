@@ -32,6 +32,9 @@ public class Users {
     @ManyToMany
     private List<Campaign> campaigns;
 
+    @ManyToMany
+    private List<Campaign> campaign;
+
     @OneToMany(mappedBy = "secretaries")
     private List<Campaign> campaignList;
 

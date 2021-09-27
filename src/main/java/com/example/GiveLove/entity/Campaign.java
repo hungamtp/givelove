@@ -35,6 +35,9 @@ public class Campaign {
     @ManyToMany(mappedBy = "campaigns")
     private List<Users> sponsors;
 
+    @ManyToMany(mappedBy = "campaign")
+    private List<Users> members;
+
     @ManyToOne
     private Users secretaries;
 
