@@ -1,6 +1,7 @@
 package com.example.GiveLove.controller;
 
 
+import com.example.GiveLove.converter.UserConverter;
 import com.example.GiveLove.dto.ResponseDTO;
 import com.example.GiveLove.entity.Users;
 import com.example.GiveLove.repository.specification.UserSpecificationBuilder;
@@ -25,7 +26,7 @@ import java.util.regex.Pattern;
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class UserController {
 
-    @Autowired
+    private UserConverter userConverter;
     private UserService userService;
 
     @GetMapping()
@@ -64,6 +65,16 @@ public class UserController {
         ResponseDTO response = new ResponseDTO();
         userService.updateRole(userId);
         response.setSuccessCode(SuccessCode.UPDATE_ROLE_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping("/search/{username}")
+    @PreAuthorize(("hasRole('Manager')"))
+    public ResponseEntity<ResponseDTO> getUserByUsername(@PathVariable String username) {
+
+        ResponseDTO response = new ResponseDTO();
+      response.setData(userConverter.convertEntityToSearchDTO( userService.findByUsername(username)));
+        response.setSuccessCode(SuccessCode.GET_USER_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
 

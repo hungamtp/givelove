@@ -1,13 +1,11 @@
 package com.example.GiveLove.repository.specification;
 
 import com.example.GiveLove.entity.Campaign;
+import com.example.GiveLove.entity.Users;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 
 @AllArgsConstructor
 public class CampaignSpecification implements Specification<Campaign> {
@@ -17,6 +15,7 @@ public class CampaignSpecification implements Specification<Campaign> {
 
     @Override
     public Predicate toPredicate(Root<Campaign> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder builder) {
+
         if (criteria.getOperation().equalsIgnoreCase(">")) {
             return builder.greaterThanOrEqualTo(
                     root.<String>get(criteria.getKey()), criteria.getValue().toString());
