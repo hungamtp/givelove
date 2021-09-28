@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 
 @Builder
+@Data
 public class TaskDTO {
 
     private Long id;
