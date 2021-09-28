@@ -5,6 +5,7 @@ import com.example.GiveLove.dto.TaskDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Task;
 import com.example.GiveLove.repository.TaskRepository;
+import com.example.GiveLove.responseCode.ErrorCode;
 import com.example.GiveLove.services.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,15 @@ public class TaskServiceImpl implements TaskService {
                 .id(taskId)
                 .isDone(true)
                 .build());
+    }
+
+    public void deleteTask(Long taskId){
+
+        taskRepository.findById(taskId).orElseThrow(() ->{
+            throw new IllegalStateException(ErrorCode.TASK_NOT_FOUND);
+        });
+
+        taskRepository.deleteById(taskId);
     }
 
 

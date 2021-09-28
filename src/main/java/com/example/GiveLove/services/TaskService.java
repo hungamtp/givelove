@@ -9,4 +9,5 @@ public interface TaskService {
     List<TaskDTO> getAllTask(Long campaignId);
     TaskDTO addTask(String task , Long campaignId);
     void finishTask(Long taskId);
+    void deleteTask(Long taskId);
 }

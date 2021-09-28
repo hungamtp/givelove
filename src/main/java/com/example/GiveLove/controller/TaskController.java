@@ -46,4 +46,14 @@ public class TaskController {
         response.setSuccessCode(SuccessCode.UPDATE_TASK_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
+
+    @DeleteMapping("/{taskId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> deleteTask(@PathVariable Long taskId ){
+        ResponseDTO response = new ResponseDTO();
+
+        taskService.deleteTask(taskId);
+        response.setSuccessCode(SuccessCode.DELETE_TASK_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
 }
