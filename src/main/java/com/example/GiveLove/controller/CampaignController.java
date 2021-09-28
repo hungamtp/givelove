@@ -74,8 +74,8 @@ public class CampaignController {
 
     @PostMapping("/addMember")
     @PreAuthorize("hasRole('Manager')")
-    public ResponseEntity<ResponseDTO> addMember(@RequestParam(value = "memberId") Integer memberId ,
-                                                 @RequestParam(value = "campaignId") Integer campaignId){
+    public ResponseEntity<ResponseDTO> addMember(@RequestParam int memberId ,
+                                                 @RequestParam int campaignId){
         ResponseDTO response = new ResponseDTO();
 
         campaignService.addMemberToCampaign(Integer.toUnsignedLong(memberId) ,Integer.toUnsignedLong(campaignId));
