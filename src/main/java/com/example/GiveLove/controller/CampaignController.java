@@ -3,9 +3,11 @@ package com.example.GiveLove.controller;
 
 import com.example.GiveLove.dto.ResponseDTO;
 import com.example.GiveLove.entity.Campaign;
+import com.example.GiveLove.repository.UsersRepository;
 import com.example.GiveLove.repository.specification.CampaignSpecificationBuilder;
 import com.example.GiveLove.responseCode.SuccessCode;
 import com.example.GiveLove.services.CampaignService;
+import com.example.GiveLove.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +28,7 @@ import java.util.regex.Pattern;
 public class CampaignController {
 
     private CampaignService campaignService;
+    private UserService userService;
 
     @GetMapping
     @PreAuthorize("hasRole('Admin')")
@@ -59,20 +62,30 @@ public class CampaignController {
     }
 
 
-    @PostMapping("/addMember")
-    @PreAuthorize("hasRole('Admin')")
-    public ResponseEntity<ResponseDTO> addMember(@RequestParam Long memberId ,
-                                                 @RequestParam Long campaignId){
+    @GetMapping("/{userId}")
+    @PreAuthorize("hasAnyRole('Member', 'Donator','Manager')")
+    public ResponseEntity<ResponseDTO> getCampaignByForUser(@PathVariable Long userId){
         ResponseDTO response = new ResponseDTO();
 
-        campaignService.addMemberToCampaign(memberId , campaignId);
+        response.setData(userService.getCampaignByUser(userId));
+        return ResponseEntity.ok().body(response);
+    }
+
+
+    @PostMapping("/addMember")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> addMember(@RequestParam(value = "memberId") Integer memberId ,
+                                                 @RequestParam(value = "campaignId") Integer campaignId){
+        ResponseDTO response = new ResponseDTO();
+
+        campaignService.addMemberToCampaign(Integer.toUnsignedLong(memberId) ,Integer.toUnsignedLong(campaignId));
 
         response.setSuccessCode(SuccessCode.ADD_USER_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
 
     @PostMapping("/addDonator")
-    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('Manager')")
     public ResponseEntity<ResponseDTO> addDonator(@RequestParam Long donatorId ,
                                                  @RequestParam Long campaignId){
         ResponseDTO response = new ResponseDTO();

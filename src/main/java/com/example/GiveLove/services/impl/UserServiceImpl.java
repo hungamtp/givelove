@@ -1,7 +1,10 @@
 package com.example.GiveLove.services.impl;
 
+import com.example.GiveLove.converter.CampaignConverter;
 import com.example.GiveLove.converter.UserConverter;
+import com.example.GiveLove.dto.CampaignDTO;
 import com.example.GiveLove.dto.PageDTO;
+import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Role;
 import com.example.GiveLove.entity.Users;
 import com.example.GiveLove.repository.UsersRepository;
@@ -18,17 +21,19 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private UsersRepository usersRepository;
-
-    @Autowired
     private UserConverter userConverter;
+    private CampaignConverter campaignConverter;
+
+
 
 
     @Override
@@ -79,6 +84,19 @@ try{
         else{
             throw new IllegalIdentifierException(ErrorCode.USER_NOT_FOUND);
         }
+    }
+
+    public List<CampaignDTO> getCampaignByUser (Long userId){
+
+
+        List<CampaignDTO> campaignDTOS = usersRepository.findById(userId).get()
+                .getCampaign()
+                .stream()
+                .map(campaign -> campaignConverter.convertEntityToDTO(campaign))
+                .collect(Collectors.toList());
+
+        return campaignDTOS;
+
     }
 
 

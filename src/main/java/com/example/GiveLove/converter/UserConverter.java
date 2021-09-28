@@ -2,6 +2,7 @@ package com.example.GiveLove.converter;
 
 import com.example.GiveLove.dto.PageDTO;
 import com.example.GiveLove.dto.UserDTO;
+import com.example.GiveLove.dto.UserSearchDTO;
 import com.example.GiveLove.entity.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
@@ -13,13 +14,21 @@ public class UserConverter {
 
     public UserDTO convertEntityToDTO(Users user){
 
-
-
         return UserDTO.builder()
                 .id(user.getId())
                 .username(user.getUsername())
                 .role(user.getRole().getName())
                 .email(user.getEmail())
+                .phone(user.getPhone())
+                .build();
+
+    }
+    public UserSearchDTO convertEntityToSearchDTO(Users user){
+
+        return UserSearchDTO.builder()
+                .userId(user.getId())
+                .username(user.getUsername())
+                .avatar(user.getAvatar())
                 .build();
 
     }
@@ -38,5 +47,6 @@ public class UserConverter {
                 .build();
 
     }
+
 
 }
