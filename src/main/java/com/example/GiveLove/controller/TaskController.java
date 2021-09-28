@@ -26,4 +26,14 @@ public class TaskController {
         response.setSuccessCode(SuccessCode.GET_ALL_CAMPAIGN_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
+
+    @PostMapping("/{campaignId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> getAllTask(@RequestParam String task , @PathVariable Long campaignId){
+        ResponseDTO response = new ResponseDTO();
+
+        response.setData(taskService.addTask(task , campaignId));
+        response.setSuccessCode(SuccessCode.ADD_TASK_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
 }
