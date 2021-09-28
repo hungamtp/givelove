@@ -28,7 +28,7 @@ public class CampaignConverter {
                 .id(campaign.getId())
                 .name(campaign.getName())
                 .description(campaign.getDescription())
-                .image(campaign.getDescription())
+                .image(campaign.getImage())
                 .endDate(campaign.getEndDate().toLocalDate())
                 .startDate(campaign.getStartDate().toLocalDate())
                 .location(campaign.getLocation())

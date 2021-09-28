@@ -25,6 +25,7 @@ public class ExpensesBlock {
 
     private int nonce;
     private Long money;
+    private String description;
     private LocalDate date;
 
     @OneToMany(mappedBy = "expensesBlock")
@@ -32,4 +33,8 @@ public class ExpensesBlock {
 
     @ManyToOne
     private Campaign campaign;
+
+    public String toData(){
+        return description+money+date;
+    }
 }

@@ -8,5 +8,7 @@ public class ErrorCode {
     public static final String GET_USER_FAIL = "GET_USER_FAIL";
     public static final String USER_NOT_FOUND = "USER_NOT_FOUND";
     public static final String CAMPAIGN_NOT_FOUND = "CAMPAIGN_NOT_FOUND";
+    public static final String MEMBER_IS_IN_CAMPAIGN = "MEMBER_IS_IN_CAMPAIGN";
+    public static final String TASK_NOT_FOUND = "TASK_NOT_FOUND";
 
 }

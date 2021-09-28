@@ -26,4 +26,34 @@ public class TaskController {
         response.setSuccessCode(SuccessCode.GET_ALL_CAMPAIGN_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
+
+    @PostMapping("/{campaignId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> getAllTask(@RequestParam String task , @PathVariable Long campaignId){
+        ResponseDTO response = new ResponseDTO();
+
+        response.setData(taskService.addTask(task , campaignId));
+        response.setSuccessCode(SuccessCode.ADD_TASK_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+
+    @PostMapping("/finish/{taskId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> finishTask(@PathVariable Long taskId ){
+        ResponseDTO response = new ResponseDTO();
+
+        taskService.finishTask(taskId );
+        response.setSuccessCode(SuccessCode.UPDATE_TASK_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+
+    @DeleteMapping("/{taskId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> deleteTask(@PathVariable Long taskId ){
+        ResponseDTO response = new ResponseDTO();
+
+        taskService.deleteTask(taskId);
+        response.setSuccessCode(SuccessCode.DELETE_TASK_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
 }
