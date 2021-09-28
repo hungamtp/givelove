@@ -22,5 +22,13 @@ public interface CampaignRepository extends JpaRepository<Campaign , Long> , Jpa
     @Query(value = "INSERT INTO users_campaigns VALUES (?1 , ?2)" , nativeQuery = true)
     void addDonatorToCampaign(Long donatorId ,Long campaignId);
 
+    @Query(value = "SELECT CASE WHEN count(members_id) > 0 THEN true ELSE false END " +
+            "checkExist FROM users_campaign where members_id =?1 and campaign_id =?2 limit 1" , nativeQuery = true)
+    boolean isInCampaign(Long memberId , Long campaignId);
+
+    @Query(value = "SELECT CASE WHEN count(sponsors_id) > 0 THEN true ELSE false END checkExist " +
+            "FROM users_campaigns where sponsors_id =?1 and campaigns_id =?2 limit 1" , nativeQuery = true)
+    boolean isDonatorInCampaign(Long donatorId , Long campaignId);
+
 
 }

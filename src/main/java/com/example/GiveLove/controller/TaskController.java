@@ -36,4 +36,14 @@ public class TaskController {
         response.setSuccessCode(SuccessCode.ADD_TASK_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
+
+    @PostMapping("/finish/{taskId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> finishTask(@PathVariable Long taskId ){
+        ResponseDTO response = new ResponseDTO();
+
+        taskService.finishTask(taskId );
+        response.setSuccessCode(SuccessCode.UPDATE_TASK_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
 }

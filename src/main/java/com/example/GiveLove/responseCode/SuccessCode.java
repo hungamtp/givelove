@@ -11,6 +11,7 @@ public class SuccessCode {
     public static final String GET_USER_SUCCESS = "GET_USER_SUCCESS";
     public static final String GET_ALL_CAMPAIGN_SUCCESS = "GET_ALL_CAMPAIGN_SUCCESS";
     public static final String ADD_TASK_SUCCESS = "ADD_TASK_SUCCESS";
+    public static final String UPDATE_TASK_SUCCESS = "UPDATE_TASK_SUCCESS";
 
 
 

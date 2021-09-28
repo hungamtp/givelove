@@ -39,5 +39,14 @@ public class TaskServiceImpl implements TaskService {
         return taskConverter.convertEntityToDTO( addedTask);
     }
 
+    @Override
+    public void finishTask(Long taskId) {
+
+        taskRepository.save(Task.builder()
+                .id(taskId)
+                .isDone(true)
+                .build());
+    }
+
 
 }
