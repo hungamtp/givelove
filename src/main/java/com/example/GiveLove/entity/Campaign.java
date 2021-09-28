@@ -43,4 +43,7 @@ public class Campaign {
 
     @OneToMany(mappedBy = "campaign")
     private List<ExpensesBlock> expenses;
+
+    @OneToMany(mappedBy = "campaign")
+    private List<Task> tasks;
 }
