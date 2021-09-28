@@ -15,3 +15,20 @@ INSERT INTO givelove.users
     (id, avatar, email, full_name, password, phone, username, role_id)
 VALUES (6, NULL, ''email@gmail.com'', NULL, ''{bcrypt}$2a$10$jCWtZkYIcjC.tVIOk7QWIeygVWP8QuIVnJRvAbaKCZ9wHm7GrvTk6'',
         NULL, ''donatorhung'', 4);
+
+
+//capaign
+
+INSERT INTO givelove.campaign
+(id, description, end_date, image, location, money, name, start_date, state, secretaries_id)
+VALUES(1, 'capaign', '2020-12-12 00:00:00', '12', 'HCM', 1341234, 'Hung', '2020-12-12 00:00:00', '1', 3);
+
+INSERT INTO givelove.campaign
+(id, description, end_date, image, location, money, name, start_date, state, secretaries_id)
+VALUES(2, 'capaign', '2020-12-12 00:00:00', '12', 'HCM', 1341234, 'Hung', '2020-12-12 00:00:00', '1', 3);
+
+INSERT INTO givelove.campaign
+(id, description, end_date, image, location, money, name, start_date, state, secretaries_id)
+VALUES(3, 'capaign', '2020-12-12 00:00:00', '12', 'HCM', 1341234, 'Hung', '2020-12-12 00:00:00', '1', 3);
+
+
