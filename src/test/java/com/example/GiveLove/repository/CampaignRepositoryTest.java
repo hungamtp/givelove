@@ -39,4 +39,11 @@ class CampaignRepositoryTest {
 
     }
 
+    @Test
+    public void testis(){
+        System.out.println(campaignRepository.isInCampaign(3L , 1L));
+        System.out.println(campaignRepository.isInCampaign(1L , 1L));
+        //assertEquals(campaignRepository.isDonatorInCampaign(1L , 1L) , true);
+    }
+
 }
