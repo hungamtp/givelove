@@ -50,7 +50,7 @@ public class CampaignServiceImpl implements CampaignService {
            throw new IllegalStateException(ErrorCode.CAMPAIGN_NOT_FOUND);
         });
 
-        if(campaignRepository.isInCampaign(memberId, campaignId)){
+        if(campaignRepository.isInCampaign(memberId, campaignId)==1){
             throw new IllegalStateException(ErrorCode.MEMBER_IS_IN_CAMPAIGN);
         }
 
@@ -69,7 +69,7 @@ public class CampaignServiceImpl implements CampaignService {
             throw new IllegalStateException(ErrorCode.CAMPAIGN_NOT_FOUND);
         });
 
-        if(campaignRepository.isDonatorInCampaign(donatorId , campaignId)){
+        if(campaignRepository.isDonatorInCampaign(donatorId , campaignId)==1){
             throw new IllegalStateException(ErrorCode.MEMBER_IS_IN_CAMPAIGN);
         }
 

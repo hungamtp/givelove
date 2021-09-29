@@ -30,10 +30,8 @@ public class ExpensesBlock {
     private int nonce;
     private Long money;
     private String description;
+    private String image;
     private LocalDate date;
-
-    @OneToMany(mappedBy = "expensesBlock")
-    private List<ExpensesImage> images;
 
     @ManyToOne
     private Campaign campaign;

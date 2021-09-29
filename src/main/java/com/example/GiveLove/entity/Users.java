@@ -1,5 +1,6 @@
 package com.example.GiveLove.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import lombok.*;
@@ -24,6 +25,8 @@ public class Users {
     private String email;
     private String phone;
     private String fullName;
+    private String address;
+    private LocalDate dateOfBirth;
 
 
     @ManyToOne(fetch = FetchType.EAGER)

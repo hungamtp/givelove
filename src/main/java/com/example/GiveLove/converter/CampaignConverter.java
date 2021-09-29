@@ -16,8 +16,6 @@ public class CampaignConverter {
     public CampaignDTO convertEntityToDTO(Campaign campaign){
         long totalExpensesMoney =0;
 
-
-
         if(campaign.getExpenses().size() != 0){
             totalExpensesMoney = campaign.getExpenses()
                     .stream().mapToLong(ExpensesBlock::getMoney)
@@ -33,7 +31,10 @@ public class CampaignConverter {
                 .startDate(campaign.getStartDate().toLocalDate())
                 .location(campaign.getLocation())
                 .totalExpenses(totalExpensesMoney)
+                .total(campaign.getMoney())
                 .state(campaign.getState())
+                .manager(campaign.getSecretaries().getFullName())
+                .totalMember(campaign.getMembers().size())
                 .build();
     }
 
