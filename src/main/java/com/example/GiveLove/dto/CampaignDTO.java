@@ -18,8 +18,10 @@ public class CampaignDTO {
     private String description;
     private String image;
     private String state;
+    private String manager;
     private Long totalExpenses;
     private Long total;
+    private int totalMember;
     private String location;
     private LocalDate startDate;
     private LocalDate endDate;

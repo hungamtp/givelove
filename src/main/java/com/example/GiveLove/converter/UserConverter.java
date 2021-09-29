@@ -20,6 +20,8 @@ public class UserConverter {
                 .role(user.getRole().getName())
                 .email(user.getEmail())
                 .phone(user.getPhone())
+                .dob(user.getDateOfBirth())
+                .address(user.getAddress())
                 .build();
 
     }
