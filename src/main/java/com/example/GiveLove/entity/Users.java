@@ -27,6 +27,7 @@ public class Users {
     private String fullName;
     private String address;
     private LocalDate dateOfBirth;
+    private Gender gender;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -40,5 +41,9 @@ public class Users {
 
     @OneToMany(mappedBy = "secretaries")
     private List<Campaign> campaignList;
+
+    public enum Gender{
+        Male , Female
+    }
 
 }

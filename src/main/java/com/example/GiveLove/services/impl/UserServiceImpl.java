@@ -4,6 +4,7 @@ import com.example.GiveLove.converter.CampaignConverter;
 import com.example.GiveLove.converter.UserConverter;
 import com.example.GiveLove.dto.CampaignDTO;
 import com.example.GiveLove.dto.PageDTO;
+import com.example.GiveLove.dto.UpdateUserDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Role;
 import com.example.GiveLove.entity.Users;
@@ -21,9 +22,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.zip.DataFormatException;
 
 @Service
 @AllArgsConstructor
@@ -97,6 +101,28 @@ try{
 
         return campaignDTOS;
 
+    }
+
+    public void updateUserProfile(Long userid , UpdateUserDTO userDTO) throws DataFormatException {
+        usersRepository.findById(userid).orElseThrow(() ->{
+           throw new IllegalStateException(ErrorCode.USER_NOT_FOUND);
+        });
+
+        if(userDTO.getDob().isAfter(LocalDate.now())){
+            throw new DataFormatException(ErrorCode.DOB_AFTER_NOW);
+        }
+
+        Users users = Users.builder()
+                .id(userid)
+                .fullName(userDTO.getFullName())
+                .dateOfBirth(userDTO.getDob())
+                .gender(userDTO.getGender())
+                .phone(userDTO.getPhone())
+                .email(userDTO.getEmail())
+                .address(userDTO.getAddress())
+                .build();
+
+        usersRepository.saveAndFlush(users);
     }
 
 

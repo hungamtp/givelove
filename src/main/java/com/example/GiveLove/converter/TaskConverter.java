@@ -16,7 +16,9 @@ public class TaskConverter {
                 .id(task.getId())
                 .description(task.getDescription())
                 .createdDate(task.getCreatedDate())
-                .isDone(task.isDone())
+                .status(task.isStatus())
+                .gift(task.getGift())
+                .type(task.getType())
                 .build();
     }
 

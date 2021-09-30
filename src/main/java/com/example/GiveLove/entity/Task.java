@@ -21,9 +21,15 @@ public class Task {
     private Long id;
 
     private String description;
+    private String gift;
+    private Mission type;
     private LocalDate createdDate;
-    private boolean isDone;
+    private boolean status;
     @ManyToOne
     private Campaign campaign;
+
+    public enum Mission{
+        Buy , Give
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.GiveLove.dto;
 
+import com.example.GiveLove.entity.Task;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -11,6 +12,8 @@ public class TaskDTO {
 
     private Long id;
     private String description;
-    private boolean isDone;
+    private String gift;
+    private Task.Mission type;
     private LocalDate createdDate;
+    private boolean status;
 }
