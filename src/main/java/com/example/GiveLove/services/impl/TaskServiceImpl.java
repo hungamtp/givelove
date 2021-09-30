@@ -33,7 +33,7 @@ public class TaskServiceImpl implements TaskService {
                 Task.builder()
                         .description(task)
                         .createdDate(LocalDate.now())
-                        .isDone(false)
+                        .status(false)
                         .campaign(Campaign.builder().id(campaignId).build())
                         .build()
         );
@@ -45,7 +45,7 @@ public class TaskServiceImpl implements TaskService {
 
         taskRepository.save(Task.builder()
                 .id(taskId)
-                .isDone(true)
+                .status(true)
                 .build());
     }
 

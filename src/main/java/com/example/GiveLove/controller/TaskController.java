@@ -21,7 +21,6 @@ public class TaskController {
     @PreAuthorize("hasAnyRole('Manager','Member')")
     public ResponseEntity<ResponseDTO> getAllTask(@RequestParam Long campaignId){
         ResponseDTO response = new ResponseDTO();
-
         response.setData(taskService.getAllTask(campaignId));
         response.setSuccessCode(SuccessCode.GET_ALL_CAMPAIGN_SUCCESS);
         return ResponseEntity.ok().body(response);
