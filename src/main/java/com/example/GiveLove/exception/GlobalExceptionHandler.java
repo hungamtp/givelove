@@ -11,6 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.nio.file.AccessDeniedException;
+import java.util.zip.DataFormatException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -28,6 +29,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity convertEntityDTOException(AccessDeniedException ex, WebRequest request) {
+        ResponseDTO errorResponse = new ResponseDTO(ex.getMessage(), null, null);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DataFormatException.class)
+    public ResponseEntity dateError(DataFormatException ex, WebRequest request) {
         ResponseDTO errorResponse = new ResponseDTO(ex.getMessage(), null, null);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }

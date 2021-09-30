@@ -101,6 +101,12 @@ public class AuthController {
                     .role(customer.getRole().getName())
                     .jwt("Bearer " + token)
                     .userId(customer.getId())
+                    .gender(customer.getGender())
+                    .phone(customer.getPhone())
+                    .fullName(customer.getFullName())
+                    .email(customer.getEmail())
+                    .address(customer.getAddress())
+                    .dob(customer.getDateOfBirth())
                     .build();
 
             response.setData(loginResponse);

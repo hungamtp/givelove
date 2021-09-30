@@ -3,11 +3,13 @@ package com.example.GiveLove.controller;
 
 import com.example.GiveLove.converter.UserConverter;
 import com.example.GiveLove.dto.ResponseDTO;
+import com.example.GiveLove.dto.UpdateUserDTO;
 import com.example.GiveLove.entity.Users;
 import com.example.GiveLove.repository.specification.UserSpecificationBuilder;
 import com.example.GiveLove.responseCode.SuccessCode;
 import com.example.GiveLove.services.UserService;
 import lombok.AllArgsConstructor;
+import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,8 +19,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.DataFormatException;
 
 @RestController
 @RequestMapping("/user")
@@ -78,5 +82,16 @@ public class UserController {
         return ResponseEntity.ok().body(response);
     }
 
+    @PutMapping("/update/{userId}")
+    @PreAuthorize("hasAnyRole('Manager' , 'Member' , 'Donator')")
+    public ResponseEntity<ResponseDTO> updateUser(@PathVariable Long userId ,
+                                                  @RequestBody @Valid UpdateUserDTO userDTO) throws DataFormatException {
+
+        ResponseDTO response = new ResponseDTO();
+        response.setData(userDTO);
+        userService.updateUserProfile(userId , userDTO);
+        response.setSuccessCode(SuccessCode.UPDATE_USER_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
 
 }
