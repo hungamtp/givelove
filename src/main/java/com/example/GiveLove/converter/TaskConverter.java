@@ -19,6 +19,7 @@ public class TaskConverter {
                 .status(task.isStatus())
                 .gift(task.getGift())
                 .type(task.getType())
+                .deadline(task.getDeadline())
                 .build();
     }
 

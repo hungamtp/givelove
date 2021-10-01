@@ -24,6 +24,7 @@ public class Task {
     private String gift;
     private Mission type;
     private LocalDate createdDate;
+    private LocalDate deadline;
     private boolean status;
     @ManyToOne
     private Campaign campaign;

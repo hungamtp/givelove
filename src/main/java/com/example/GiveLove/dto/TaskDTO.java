@@ -15,5 +15,6 @@ public class TaskDTO {
     private String gift;
     private Task.Mission type;
     private LocalDate createdDate;
+    private LocalDate deadline;
     private boolean status;
 }
