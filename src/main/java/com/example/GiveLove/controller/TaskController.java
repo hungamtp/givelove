@@ -1,6 +1,7 @@
 package com.example.GiveLove.controller;
 
 
+import com.example.GiveLove.dto.AddTask;
 import com.example.GiveLove.dto.ResponseDTO;
 import com.example.GiveLove.responseCode.SuccessCode;
 import com.example.GiveLove.services.TaskService;
@@ -28,7 +29,7 @@ public class TaskController {
 
     @PostMapping("/{campaignId}")
     @PreAuthorize("hasRole('Manager')")
-    public ResponseEntity<ResponseDTO> getAllTask(@RequestParam String task , @PathVariable Long campaignId){
+    public ResponseEntity<ResponseDTO> addTask(@RequestBody AddTask task , @PathVariable Long campaignId){
         ResponseDTO response = new ResponseDTO();
 
         response.setData(taskService.addTask(task , campaignId));

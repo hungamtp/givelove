@@ -43,7 +43,7 @@ public class Users {
     private List<Campaign> campaignList;
 
     public enum Gender{
-        Male , Female
+        male , female
     }
 
 }
