@@ -30,7 +30,7 @@ public class Task {
     private Campaign campaign;
 
     public enum Mission{
-        Buy , Give
+        buy , give
     }
 
 }

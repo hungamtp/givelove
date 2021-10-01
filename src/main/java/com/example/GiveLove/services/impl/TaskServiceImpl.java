@@ -1,6 +1,7 @@
 package com.example.GiveLove.services.impl;
 
 import com.example.GiveLove.converter.TaskConverter;
+import com.example.GiveLove.dto.AddTask;
 import com.example.GiveLove.dto.TaskDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Task;
@@ -28,10 +29,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskDTO addTask(String task  , Long campaignId) {
+    public TaskDTO addTask(AddTask task  , Long campaignId) {
         Task addedTask = taskRepository.save(
                 Task.builder()
-                        .description(task)
+                        .description(task.getTask())
+                        .deadline(task.getDeadline())
                         .createdDate(LocalDate.now())
                         .status(false)
                         .campaign(Campaign.builder().id(campaignId).build())
