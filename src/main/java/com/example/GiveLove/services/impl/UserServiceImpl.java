@@ -122,7 +122,8 @@ try{
                 .address(userDTO.getAddress())
                 .build();
 
-        usersRepository.saveAndFlush(users);
+        usersRepository.updateProfile(userDTO.getAddress() , userDTO.getDob() , userDTO.getEmail()
+                , userDTO.getFullName() , userDTO.getPhone(),  userid);
     }
 
 
