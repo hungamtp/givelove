@@ -5,9 +5,11 @@ import com.example.GiveLove.converter.UserConverter;
 import com.example.GiveLove.dto.CampaignDTO;
 import com.example.GiveLove.dto.PageDTO;
 import com.example.GiveLove.dto.UpdateUserDTO;
+import com.example.GiveLove.dto.UserDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Role;
 import com.example.GiveLove.entity.Users;
+import com.example.GiveLove.repository.CampaignRepository;
 import com.example.GiveLove.repository.UsersRepository;
 import com.example.GiveLove.repository.specification.SearchCriteria;
 import com.example.GiveLove.repository.specification.UserSpecification;
@@ -36,6 +38,7 @@ public class UserServiceImpl implements UserService {
     private UsersRepository usersRepository;
     private UserConverter userConverter;
     private CampaignConverter campaignConverter;
+    private CampaignRepository campaignRepository;
 
 
 
@@ -124,6 +127,17 @@ try{
 
         usersRepository.updateProfile(userDTO.getAddress() , userDTO.getDob() , userDTO.getEmail()
                 , userDTO.getFullName() , userDTO.getPhone(),  userid);
+    }
+
+    public List<UserDTO> getAllUserInCampaign (Long campaignId){
+
+       Campaign campaign= campaignRepository.findById(campaignId).orElseThrow(()->{
+                throw new IllegalStateException(ErrorCode.CAMPAIGN_NOT_FOUND);
+        });
+
+        return campaign.getMembers()
+                .stream().map(users -> userConverter.convertEntityToDTO(users))
+                .collect(Collectors.toList());
     }
 
 

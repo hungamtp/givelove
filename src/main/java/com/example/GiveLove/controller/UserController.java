@@ -94,4 +94,14 @@ public class UserController {
         return ResponseEntity.ok().body(response);
     }
 
+    @GetMapping("usersInCampaign/{campaignId}")
+    @PreAuthorize("hasRole('Manager' )")
+    public ResponseEntity<ResponseDTO> updateUser(@PathVariable Long campaignId) throws DataFormatException {
+
+        ResponseDTO response = new ResponseDTO();
+        response.setData(userService.getAllUserInCampaign(campaignId));
+        response.setSuccessCode(SuccessCode.UPDATE_USER_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+
 }
