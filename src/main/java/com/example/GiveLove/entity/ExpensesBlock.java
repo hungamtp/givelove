@@ -5,12 +5,10 @@ import lombok.*;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.logging.Level;
 
@@ -20,18 +18,18 @@ import java.util.logging.Level;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(indexes = @Index(columnList = "date"))
 public class ExpensesBlock {
 
     @Id
     private String hash;
     private String previousHash;
-    private LocalDate datetime;
 
     private int nonce;
     private Long money;
     private String description;
     private String image;
-    private LocalDate date;
+    private LocalDateTime date;
 
     @ManyToOne
     private Campaign campaign;
