@@ -104,4 +104,14 @@ public class UserController {
         return ResponseEntity.ok().body(response);
     }
 
+    @GetMapping("/{userId}")
+    @PreAuthorize("hasAnyRole('Donator' , 'Manager' , 'Admin' , 'Member')")
+    public ResponseEntity<ResponseDTO> getUserById(@PathVariable Long userId)  {
+
+        ResponseDTO response = new ResponseDTO();
+        response.setData(userService.getUserById(userId));
+        response.setSuccessCode(SuccessCode.GET_USER_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+
 }
