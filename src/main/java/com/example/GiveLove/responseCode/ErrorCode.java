@@ -17,5 +17,6 @@ public class ErrorCode {
     public static final String EMAIL_BLANK = "EMAIL_BLANK";
     public static final String ADDRESS_BLANK = "ADDRESS_BLANK";
     public static final String DOB_AFTER_NOW = "DOB_AFTER_NOW";
+    public static final String EXPENSES_INVALID = "EXPENSES_INVALID";
 
 }
