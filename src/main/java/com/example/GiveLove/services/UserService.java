@@ -27,4 +27,5 @@ public interface UserService {
     List<UserDTO> getAllUserInCampaign (Long campaignId);
     List<CampaignDTO> getCampaignByManager (Long userId);
     UserDTO getUserById(Long userId);
+    List<CampaignDTO> getCampaignByDonator (Long userId);
 }
