@@ -25,4 +25,5 @@ public interface UserService {
     List<CampaignDTO> getCampaignByUser (Long userId);
     void updateUserProfile(Long userid , UpdateUserDTO userDTO) throws DataFormatException;
     List<UserDTO> getAllUserInCampaign (Long campaignId);
+    List<CampaignDTO> getCampaignByManager (Long userId);
 }
