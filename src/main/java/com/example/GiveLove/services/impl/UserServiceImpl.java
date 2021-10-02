@@ -153,5 +153,9 @@ try{
                 .collect(Collectors.toList());
     }
 
+    public UserDTO getUserById(Long userId){
+        return userConverter.convertEntityToDTO(usersRepository.findById(userId).get());
+    }
+
 
 }
