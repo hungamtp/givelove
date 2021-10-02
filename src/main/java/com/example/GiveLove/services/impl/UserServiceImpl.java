@@ -119,6 +119,19 @@ try{
 
     }
 
+    public List<CampaignDTO> getCampaignByDonator (Long userId){
+
+
+        List<CampaignDTO> campaignDTOS = usersRepository.findById(userId).get()
+                .getCampaigns()
+                .stream()
+                .map(campaign -> campaignConverter.convertEntityToDTO(campaign))
+                .collect(Collectors.toList());
+
+        return campaignDTOS;
+
+    }
+
     public void updateUserProfile(Long userid , UpdateUserDTO userDTO) throws DataFormatException {
         usersRepository.findById(userid).orElseThrow(() ->{
            throw new IllegalStateException(ErrorCode.USER_NOT_FOUND);

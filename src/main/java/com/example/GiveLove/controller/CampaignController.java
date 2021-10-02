@@ -80,6 +80,15 @@ public class CampaignController {
         return ResponseEntity.ok().body(response);
     }
 
+    @GetMapping("/donator/{managerId}")
+    @PreAuthorize("hasAnyRole('Donator')")
+    public ResponseEntity<ResponseDTO> getCampaignByForDonator(@PathVariable Long managerId){
+        ResponseDTO response = new ResponseDTO();
+
+        response.setData(userService.getCampaignByDonator(managerId));
+        return ResponseEntity.ok().body(response);
+    }
+
 
     @PostMapping("/addMember")
     @PreAuthorize("hasRole('Manager')")
