@@ -14,6 +14,7 @@ import java.util.zip.DataFormatException;
 @RestController
 @RequestMapping("expenses")
 @AllArgsConstructor
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ExpensesController {
 
     private ExpensesService expensesService;
