@@ -1,8 +1,10 @@
 package com.example.GiveLove.services.impl;
 
 import com.example.GiveLove.converter.CampaignConverter;
+import com.example.GiveLove.dto.AddCampaignDTO;
 import com.example.GiveLove.dto.PageDTO;
 import com.example.GiveLove.entity.Campaign;
+import com.example.GiveLove.entity.Users;
 import com.example.GiveLove.repository.CampaignRepository;
 import com.example.GiveLove.repository.UsersRepository;
 import com.example.GiveLove.responseCode.ErrorCode;
@@ -15,6 +17,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 
 @Service
@@ -74,6 +78,24 @@ public class CampaignServiceImpl implements CampaignService {
         }
 
         campaignRepository.addMemberToCampaign(donatorId , campaignId);
+    }
+
+    public void addCampaign(AddCampaignDTO campaignDTO , Long managerId){
+
+
+        Campaign campaign = Campaign.builder()
+                .image(campaignDTO.getImage())
+                .name(campaignDTO.getName())
+                .description(campaignDTO.getDescription())
+                .endDate(campaignDTO.getEndDate().atTime(0,0))
+                .startDate(campaignDTO.getStartDate().atTime(0 ,0))
+                .secretaries(Users.builder().id(managerId).build())
+                .money(campaignDTO.getTotal())
+                .location(campaignDTO.getLocation())
+                .state("Still")
+                .build();
+
+        campaignRepository.save(campaign);
     }
 
 

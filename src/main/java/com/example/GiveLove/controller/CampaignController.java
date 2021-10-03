@@ -1,6 +1,7 @@
 package com.example.GiveLove.controller;
 
 
+import com.example.GiveLove.dto.AddCampaignDTO;
 import com.example.GiveLove.dto.ResponseDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.repository.UsersRepository;
@@ -114,5 +115,17 @@ public class CampaignController {
         return ResponseEntity.ok().body(response);
     }
 
+    @PostMapping("/add/{managerId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> addCampaign(@RequestBody AddCampaignDTO campaignDTO ,
+                                                  @PathVariable Long managerId){
+        ResponseDTO response = new ResponseDTO();
+
+        campaignService.addCampaign(campaignDTO , managerId);
+
+        response.setSuccessCode(SuccessCode.ADD_CAMPAIGN_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
 
 }
+

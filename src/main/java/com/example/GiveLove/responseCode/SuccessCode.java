@@ -14,6 +14,7 @@ public class SuccessCode {
     public static final String UPDATE_TASK_SUCCESS = "UPDATE_TASK_SUCCESS";
     public static final String DELETE_TASK_SUCCESS = "DELETE_TASK_SUCCESS";
     public static final String UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
+    public static final String ADD_CAMPAIGN_SUCCESS = "ADD_CAMPAIGN_SUCCESS";
     public static final String ADD_EXPENSES_SUCCESS = "ADD_EXPENSES_SUCCESS";
     public static final String GET_ALL_EXPENSES_SUCCESS = "GET_ALL_EXPENSES_SUCCESS";
 
