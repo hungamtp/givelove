@@ -21,6 +21,7 @@ public class UserConverter {
                 .email(user.getEmail())
                 .phone(user.getPhone())
                 .dob(user.getDateOfBirth())
+                .fullName(user.getFullName())
                 .address(user.getAddress())
                 .build();
 
