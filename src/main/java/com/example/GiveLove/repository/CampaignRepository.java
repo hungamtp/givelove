@@ -34,6 +34,12 @@ public interface CampaignRepository extends JpaRepository<Campaign , Long> , Jpa
     @Modifying
     @Query(value = "DELETE FROM users_campaign  WHERE members_id = ?1 AND campaign_id  =?2" , nativeQuery = true)
     void deleteUserFromCampaign(Long memberId , Long campaignId);
+    //delete from users_campaigns  where sponsors_id = 1 and campaigns_id  =1
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM users_campaigns  WHERE sponsors_id = ?1 AND campaigns_id  =?2" , nativeQuery = true)
+    void deleteDonatorFromCampaign(Long donatorId , Long campaignId);
 
 
 

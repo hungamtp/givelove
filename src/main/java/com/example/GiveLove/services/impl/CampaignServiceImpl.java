@@ -112,5 +112,19 @@ public class CampaignServiceImpl implements CampaignService {
         campaignRepository.deleteUserFromCampaign(memberId , campaignId);
     }
 
+    public void deleteDonatorFromCampaign(Long donatorId , Long campaignId){
+
+        usersRepository.findById(donatorId).orElseThrow(() ->{
+            throw  new IllegalStateException(ErrorCode.USER_NOT_FOUND);
+        });
+
+
+        campaignRepository.findById(campaignId).orElseThrow(() ->{
+            throw new IllegalStateException(ErrorCode.CAMPAIGN_NOT_FOUND);
+        });
+
+        campaignRepository.deleteDonatorFromCampaign(donatorId , campaignId);
+    }
+
 
 }

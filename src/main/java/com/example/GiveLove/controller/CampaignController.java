@@ -109,7 +109,7 @@ public class CampaignController {
                                                  @RequestParam Long campaignId){
         ResponseDTO response = new ResponseDTO();
 
-        campaignService.addMemberToCampaign(donatorId , campaignId);
+        campaignService.addDonatorToCampaign(donatorId , campaignId);
 
         response.setSuccessCode(SuccessCode.ADD_USER_SUCCESS);
         return ResponseEntity.ok().body(response);
@@ -129,7 +129,7 @@ public class CampaignController {
 
     @DeleteMapping("/{campaignId}")
     @PreAuthorize("hasRole('Manager')")
-    public ResponseEntity<ResponseDTO> addCampaign(@RequestParam Long memberId ,
+    public ResponseEntity<ResponseDTO> deelteMemberFromCampaign(@RequestParam Long memberId ,
                                                    @PathVariable Long campaignId){
         ResponseDTO response = new ResponseDTO();
 
@@ -138,6 +138,20 @@ public class CampaignController {
         response.setSuccessCode(SuccessCode.DELETE_MEMBER_FROM_CAMPAIGN_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
+
+    @DeleteMapping("/donator/{campaignId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> deelteDonatorFromCampaign(@RequestParam Long donatorId ,
+                                                                @PathVariable Long campaignId){
+        ResponseDTO response = new ResponseDTO();
+
+        campaignService.deleteDonatorFromCampaign(donatorId , campaignId);
+
+        response.setSuccessCode(SuccessCode.DELETE_DONATOR_FROM_CAMPAIGN_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+
+
 
 
 }

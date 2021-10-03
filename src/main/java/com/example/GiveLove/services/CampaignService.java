@@ -14,4 +14,5 @@ public interface CampaignService {
     void addDonatorToCampaign (Long donatorId , Long campaignId );
     void addCampaign(AddCampaignDTO campaignDTO , Long managerId);
     void deleteUserFromCampaign(Long memberId , Long campaignId);
+    void deleteDonatorFromCampaign(Long donatorId , Long campaignId);
 }
