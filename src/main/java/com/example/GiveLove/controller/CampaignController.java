@@ -127,5 +127,18 @@ public class CampaignController {
         return ResponseEntity.ok().body(response);
     }
 
+    @DeleteMapping("/{campaignId}")
+    @PreAuthorize("hasRole('Manager')")
+    public ResponseEntity<ResponseDTO> addCampaign(@RequestParam Long memberId ,
+                                                   @PathVariable Long campaignId){
+        ResponseDTO response = new ResponseDTO();
+
+        campaignService.deleteUserFromCampaign(memberId , campaignId);
+
+        response.setSuccessCode(SuccessCode.DELETE_MEMBER_FROM_CAMPAIGN_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+
+
 }
 

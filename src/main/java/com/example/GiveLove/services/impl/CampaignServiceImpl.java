@@ -98,5 +98,19 @@ public class CampaignServiceImpl implements CampaignService {
         campaignRepository.save(campaign);
     }
 
+    public void deleteUserFromCampaign(Long memberId , Long campaignId){
+
+        usersRepository.findById(memberId).orElseThrow(() ->{
+            throw  new IllegalStateException(ErrorCode.USER_NOT_FOUND);
+        });
+
+
+        campaignRepository.findById(campaignId).orElseThrow(() ->{
+            throw new IllegalStateException(ErrorCode.CAMPAIGN_NOT_FOUND);
+        });
+
+        campaignRepository.deleteUserFromCampaign(memberId , campaignId);
+    }
+
 
 }
