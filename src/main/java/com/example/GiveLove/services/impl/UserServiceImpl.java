@@ -166,6 +166,17 @@ try{
                 .collect(Collectors.toList());
     }
 
+    public List<UserDTO> getAllDonatorInCampaign (Long campaignId){
+
+        Campaign campaign= campaignRepository.findById(campaignId).orElseThrow(()->{
+            throw new IllegalStateException(ErrorCode.CAMPAIGN_NOT_FOUND);
+        });
+
+        return campaign.getSponsors()
+                .stream().map(users -> userConverter.convertEntityToDTO(users))
+                .collect(Collectors.toList());
+    }
+
     public UserDTO getUserById(Long userId){
         return userConverter.convertEntityToDTO(usersRepository.findById(userId).get());
     }

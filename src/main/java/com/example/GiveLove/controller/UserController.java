@@ -96,11 +96,20 @@ public class UserController {
 
     @GetMapping("usersInCampaign/{campaignId}")
     @PreAuthorize("hasRole('Manager' )")
-    public ResponseEntity<ResponseDTO> updateUser(@PathVariable Long campaignId) throws DataFormatException {
+    public ResponseEntity<ResponseDTO> getAllUserInCampaign(@PathVariable Long campaignId) throws DataFormatException {
 
         ResponseDTO response = new ResponseDTO();
         response.setData(userService.getAllUserInCampaign(campaignId));
         response.setSuccessCode(SuccessCode.UPDATE_USER_SUCCESS);
+        return ResponseEntity.ok().body(response);
+    }
+    @GetMapping("donatorInCampaign/{campaignId}")
+    @PreAuthorize("hasRole('Manager' )")
+    public ResponseEntity<ResponseDTO> getAllDonatorInCampaign(@PathVariable Long campaignId) throws DataFormatException {
+
+        ResponseDTO response = new ResponseDTO();
+        response.setData(userService.getAllDonatorInCampaign(campaignId));
+        response.setSuccessCode(SuccessCode.UPDATE_DONATOR_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
 

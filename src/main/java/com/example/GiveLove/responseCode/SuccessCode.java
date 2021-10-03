@@ -19,6 +19,7 @@ public class SuccessCode {
     public static final String ADD_CAMPAIGN_SUCCESS = "ADD_CAMPAIGN_SUCCESS";
     public static final String ADD_EXPENSES_SUCCESS = "ADD_EXPENSES_SUCCESS";
     public static final String GET_ALL_EXPENSES_SUCCESS = "GET_ALL_EXPENSES_SUCCESS";
+    public static final String UPDATE_DONATOR_SUCCESS = "UPDATE_DONATOR_SUCCESS";
 
 
 
