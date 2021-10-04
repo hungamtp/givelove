@@ -77,7 +77,7 @@ public class CampaignServiceImpl implements CampaignService {
             throw new IllegalStateException(ErrorCode.MEMBER_IS_IN_CAMPAIGN);
         }
 
-        campaignRepository.addMemberToCampaign(donatorId , campaignId);
+        campaignRepository.addDonatorToCampaign(donatorId , campaignId);
     }
 
     public void addCampaign(AddCampaignDTO campaignDTO , Long managerId){
