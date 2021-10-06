@@ -72,12 +72,12 @@ public class UserController {
         return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping("/search/{username}")
+    @GetMapping("/search")
     @PreAuthorize(("hasRole('Manager')"))
-    public ResponseEntity<ResponseDTO> getUserByUsername(@PathVariable String username) {
+    public ResponseEntity<ResponseDTO> getUserByUsername(@RequestBody String fullName) {
 
         ResponseDTO response = new ResponseDTO();
-      response.setData(userConverter.convertEntityToSearchDTO( userService.findByUsername(username)));
+      response.setData( userService.findByFullname(fullName));
         response.setSuccessCode(SuccessCode.GET_USER_SUCCESS);
         return ResponseEntity.ok().body(response);
     }

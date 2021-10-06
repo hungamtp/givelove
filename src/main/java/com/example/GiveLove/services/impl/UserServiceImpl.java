@@ -65,6 +65,15 @@ public class UserServiceImpl implements UserService {
         }
         return  user.get();
     }
+    @Override
+    public List<UserDTO> findByFullname(String fullname) {
+
+        List<Users>user = usersRepository.findByFullNameLike(fullname);
+        if(user.size()==0){
+            throw new DuplicateKeyException(ErrorCode.FULLNAME_NOT_AVAILABLE);
+        }
+        return user.stream().map(u -> userConverter.convertEntityToDTO(u)).collect(Collectors.toList());
+    }
 
     @Override
     public PageDTO getAllUser(Specification specification, Pageable pageable) {

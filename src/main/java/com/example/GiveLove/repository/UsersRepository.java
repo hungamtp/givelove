@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface UsersRepository extends JpaRepository<Users,Long> , JpaSpecificationExecutor<Users> {
     Users findByUsername(String username);
+    List<Users> findByFullNameLike(String fullName);
 
 
     @Modifying

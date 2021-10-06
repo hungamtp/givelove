@@ -3,6 +3,7 @@ package com.example.GiveLove.exception;
 
 import com.example.GiveLove.dto.ResponseDTO;
 import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -35,6 +36,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(DataFormatException.class)
     public ResponseEntity dateError(DataFormatException ex, WebRequest request) {
+        ResponseDTO errorResponse = new ResponseDTO(ex.getMessage(), null, null);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(DuplicateKeyException.class)
+    public ResponseEntity dateError(DuplicateKeyException ex, WebRequest request) {
         ResponseDTO errorResponse = new ResponseDTO(ex.getMessage(), null, null);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
