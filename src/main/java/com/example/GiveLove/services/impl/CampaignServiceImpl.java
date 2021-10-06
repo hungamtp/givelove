@@ -2,6 +2,7 @@ package com.example.GiveLove.services.impl;
 
 import com.example.GiveLove.converter.CampaignConverter;
 import com.example.GiveLove.dto.AddCampaignDTO;
+import com.example.GiveLove.dto.CampaignDTO;
 import com.example.GiveLove.dto.PageDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Users;
@@ -17,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -80,7 +82,7 @@ public class CampaignServiceImpl implements CampaignService {
         campaignRepository.addDonatorToCampaign(donatorId , campaignId);
     }
 
-    public void addCampaign(AddCampaignDTO campaignDTO , Long managerId){
+    public CampaignDTO addCampaign(AddCampaignDTO campaignDTO , Long managerId){
 
 
         Campaign campaign = Campaign.builder()
@@ -95,7 +97,20 @@ public class CampaignServiceImpl implements CampaignService {
                 .state("Still")
                 .build();
 
-        campaignRepository.save(campaign);
+      Campaign savedCampaign= campaignRepository.save(campaign);
+
+      return CampaignDTO.builder()
+              .name(campaignDTO.getName())
+              .description(campaign.getDescription())
+              .image(campaign.getImage())
+              .startDate(campaignDTO.getStartDate())
+              .endDate(campaignDTO.getEndDate())
+              .total(campaignDTO.getTotal())
+              .location(campaignDTO.getLocation())
+              .totalMember(0)
+              .state("Still")
+              .totalExpenses(0L)
+              .build();
     }
 
     public void deleteUserFromCampaign(Long memberId , Long campaignId){
