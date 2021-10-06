@@ -5,7 +5,9 @@ import com.example.GiveLove.dto.AddExpensesDTO;
 import com.example.GiveLove.dto.ExpensesDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.ExpensesBlock;
+import com.example.GiveLove.entity.Task;
 import com.example.GiveLove.repository.ExpensesRepository;
+import com.example.GiveLove.repository.TaskRepository;
 import com.example.GiveLove.responseCode.ErrorCode;
 import com.example.GiveLove.services.ExpensesService;
 import lombok.AllArgsConstructor;
@@ -24,6 +26,7 @@ public class ExpensesServiceImpl implements ExpensesService {
     private static final int PREFIX = 1;
 
     private ExpensesRepository expensesRepository;
+    private TaskRepository taskRepository;
     private ExpensesConverter expensesConverter;
 
     public void addExpenses(AddExpensesDTO addExpensesDTO , Long campaignId){
@@ -49,6 +52,11 @@ public class ExpensesServiceImpl implements ExpensesService {
         expensesBlock.mineBlock(1);
 
         expensesRepository.save(expensesBlock);
+        var task = taskRepository.findById(addExpensesDTO.getTaskId()).get();
+        task.setStatus(true);
+        taskRepository.save(task);
+
+
 
     }
 

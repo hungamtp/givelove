@@ -14,4 +14,5 @@ public class AddExpensesDTO {
     Long money;
     String description;
     String image;
+    Long taskId;
 }
