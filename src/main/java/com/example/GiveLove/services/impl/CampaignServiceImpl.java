@@ -97,9 +97,10 @@ public class CampaignServiceImpl implements CampaignService {
                 .state("Still")
                 .build();
 
-      Campaign savedCampaign= campaignRepository.save(campaign);
+        campaignRepository.save(campaign);
 
       return CampaignDTO.builder()
+              .id(campaignRepository.getLatestId())
               .name(campaignDTO.getName())
               .description(campaign.getDescription())
               .image(campaign.getImage())
@@ -108,6 +109,7 @@ public class CampaignServiceImpl implements CampaignService {
               .total(campaignDTO.getTotal())
               .location(campaignDTO.getLocation())
               .totalMember(0)
+              .manager(usersRepository.findById(managerId).get().getFullName())
               .state("Still")
               .totalExpenses(0L)
               .build();

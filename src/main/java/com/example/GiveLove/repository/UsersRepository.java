@@ -14,7 +14,9 @@ import java.util.List;
 @Repository
 public interface UsersRepository extends JpaRepository<Users,Long> , JpaSpecificationExecutor<Users> {
     Users findByUsername(String username);
-    List<Users> findByFullNameLike(String fullName);
+
+    @Query(value = "select * from users where full_name like ?1" , nativeQuery = true)
+    List<Users> search(String fullName);
 
 
     @Modifying

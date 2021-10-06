@@ -41,6 +41,9 @@ public interface CampaignRepository extends JpaRepository<Campaign , Long> , Jpa
     @Query(value = "DELETE FROM users_campaigns  WHERE sponsors_id = ?1 AND campaigns_id  =?2" , nativeQuery = true)
     void deleteDonatorFromCampaign(Long donatorId , Long campaignId);
 
+    @Query(value = "select id from campaign c order by id desc limit 1" , nativeQuery = true)
+    Long getLatestId();
+
 
 
 }

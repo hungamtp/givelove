@@ -121,8 +121,8 @@ public class CampaignController {
                                                   @PathVariable Long managerId){
         ResponseDTO response = new ResponseDTO();
 
-        campaignService.addCampaign(campaignDTO , managerId);
 
+        response.setData(campaignService.addCampaign(campaignDTO , managerId));
         response.setSuccessCode(SuccessCode.ADD_CAMPAIGN_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
