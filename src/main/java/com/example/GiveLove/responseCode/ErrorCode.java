@@ -19,5 +19,6 @@ public class ErrorCode {
     public static final String DOB_AFTER_NOW = "DOB_AFTER_NOW";
     public static final String EXPENSES_INVALID = "EXPENSES_INVALID";
     public static final String FULLNAME_NOT_AVAILABLE = "FULLNAME_NOT_AVAILABLE";
+    public static final String ROLE_NOT_ALLOWED = "ROLE_NOT_ALLOWED";
 
 }

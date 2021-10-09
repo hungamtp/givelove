@@ -66,11 +66,12 @@ public class UserServiceImpl implements UserService {
         return  user.get();
     }
     @Override
-    public List<UserDTO> findByFullname(String fullname) {
+    public List<UserDTO> findByFullname(String fullname , Long roleId) {
 
-        List<Users>user = usersRepository.search(fullname);
-
-        return user.stream().map(u -> userConverter.convertEntityToDTO(u)).collect(Collectors.toList());
+        List<Users> users = usersRepository.search(fullname , roleId);
+        System.out.println(users.size());
+        var dtos = users.stream().map(user -> userConverter.convertEntityToDTO(user)).collect(Collectors.toList());
+        return dtos;
     }
 
     @Override

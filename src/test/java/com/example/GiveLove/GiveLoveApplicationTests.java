@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 import static org.mockito.Mockito.when;
@@ -26,6 +29,9 @@ class GiveLoveApplicationTests {
 	@Autowired
 	CampaignRepository campaignRepository;
 
+	@Autowired
+	UsersRepository usersRepository;
+
 
 
 	@Test
@@ -34,8 +40,8 @@ class GiveLoveApplicationTests {
 
 @Test
 	void getTask(){
-		campaignRepository.save(Campaign.builder().id(1L).build());
-	System.out.println(repository.findByCampaign(Campaign.builder().id(1L).build()).size());
+		List<Users> users = usersRepository.search("hung" , 3L);
+		assertEquals(users.size() , 2);
 }
 
 

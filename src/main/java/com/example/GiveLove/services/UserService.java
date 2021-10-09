@@ -29,5 +29,6 @@ public interface UserService {
     UserDTO getUserById(Long userId);
     List<CampaignDTO> getCampaignByDonator (Long userId);
     List<UserDTO> getAllDonatorInCampaign (Long campaignId);
-    List<UserDTO> findByFullname(String fullname);
+    List<UserDTO> findByFullname(String fullname , Long roleId);
+
 }

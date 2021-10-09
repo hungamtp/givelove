@@ -6,6 +6,7 @@ import com.example.GiveLove.dto.ResponseDTO;
 import com.example.GiveLove.dto.UpdateUserDTO;
 import com.example.GiveLove.entity.Users;
 import com.example.GiveLove.repository.specification.UserSpecificationBuilder;
+import com.example.GiveLove.responseCode.ErrorCode;
 import com.example.GiveLove.responseCode.SuccessCode;
 import com.example.GiveLove.services.UserService;
 import lombok.AllArgsConstructor;
@@ -74,10 +75,14 @@ public class UserController {
 
     @GetMapping("/search")
     @PreAuthorize(("hasRole('Manager')"))
-    public ResponseEntity<ResponseDTO> getUserByUsername(@RequestBody String fullName) {
+    public ResponseEntity<ResponseDTO> getUserByUsername(@RequestParam String fullName ,
+                                                         @RequestParam Long roleId) throws DataFormatException {
 
         ResponseDTO response = new ResponseDTO();
-      response.setData( userService.findByFullname(fullName));
+        if(roleId <3 || roleId > 4){
+            throw new DataFormatException(ErrorCode.ROLE_NOT_ALLOWED);
+        }
+        response.setData( userService.findByFullname(fullName , roleId));
         response.setSuccessCode(SuccessCode.GET_USER_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
