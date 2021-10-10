@@ -66,9 +66,9 @@ public class UserController {
 
     @PutMapping("/{userId}")
     @PreAuthorize("hasRole('Admin')")
-    public ResponseEntity<ResponseDTO> updateRole(@PathVariable Long userId) {
+    public ResponseEntity<ResponseDTO> updateRole(@PathVariable Long userId , @RequestParam Long roleId) {
         ResponseDTO response = new ResponseDTO();
-        userService.updateRole(userId);
+        userService.updateRole(userId , roleId);
         response.setSuccessCode(SuccessCode.UPDATE_ROLE_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
@@ -105,7 +105,7 @@ public class UserController {
 
         ResponseDTO response = new ResponseDTO();
         response.setData(userService.getAllUserInCampaign(campaignId));
-        response.setSuccessCode(SuccessCode.UPDATE_USER_SUCCESS);
+        response.setSuccessCode(SuccessCode.GET_USER_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
     @GetMapping("donatorInCampaign/{campaignId}")
@@ -114,7 +114,7 @@ public class UserController {
 
         ResponseDTO response = new ResponseDTO();
         response.setData(userService.getAllDonatorInCampaign(campaignId));
-        response.setSuccessCode(SuccessCode.UPDATE_DONATOR_SUCCESS);
+        response.setSuccessCode(SuccessCode.GET_DONATOR_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
 

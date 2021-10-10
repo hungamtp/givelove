@@ -20,7 +20,7 @@ public interface UserService {
 
     PageDTO getAllUser(Specification specification , Pageable pageable);
 
-    void updateRole(Long userId);
+    void updateRole(Long userId , Long roleId);
 
     List<CampaignDTO> getCampaignByUser (Long userId);
     void updateUserProfile(Long userid , UpdateUserDTO userDTO) throws DataFormatException;

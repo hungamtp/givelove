@@ -85,7 +85,7 @@ try{
     }
 
     @Override
-    public void updateRole(Long userId) {
+    public void updateRole(Long userId , Long roleId) {
 
         UserSpecification specification = new UserSpecification(new SearchCriteria("id" , ":" , userId));
 
@@ -93,7 +93,7 @@ try{
 
         if(usersOptional.isPresent()){
             Users updatedUser = usersOptional.get();
-            updatedUser.setRole(Role.builder().id(3L).build());
+            updatedUser.setRole(Role.builder().id(roleId).build());
             usersRepository.save(updatedUser);
         }
         else{
