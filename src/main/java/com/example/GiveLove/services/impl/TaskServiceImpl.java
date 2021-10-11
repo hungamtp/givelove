@@ -32,10 +32,12 @@ public class TaskServiceImpl implements TaskService {
     public TaskDTO addTask(AddTask task  , Long campaignId) {
         Task addedTask = taskRepository.save(
                 Task.builder()
-                        .description(task.getTask())
+                        .description(task.getDesc())
                         .deadline(task.getDeadline())
                         .createdDate(LocalDate.now())
                         .status(false)
+                        .type(task.getType())
+                        .gift(task.getGift())
                         .campaign(Campaign.builder().id(campaignId).build())
                         .build()
         );

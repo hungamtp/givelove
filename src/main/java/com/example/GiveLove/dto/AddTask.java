@@ -1,5 +1,6 @@
 package com.example.GiveLove.dto;
 
+import com.example.GiveLove.entity.Task;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,9 @@ import java.time.LocalDate;
 @Data
 public class AddTask {
 
-    String task;
+    String desc;
+    String gift;
     LocalDate deadline;
+    Task.Mission type;
+
 }
