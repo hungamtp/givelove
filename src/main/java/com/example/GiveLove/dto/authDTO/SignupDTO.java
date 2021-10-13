@@ -25,6 +25,7 @@ public class SignupDTO {
     @Email
     @NotBlank
     private String email;
+    private String phone;
 
     private Long roleId;
 }

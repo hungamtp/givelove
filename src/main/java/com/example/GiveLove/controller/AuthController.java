@@ -62,6 +62,7 @@ public class AuthController {
                 .password("{bcrypt}" + passwordEncoder.encode(user.getPassword()))
                 .email(user.getEmail())
                 .role(Role.builder().id(user.getRoleId()).build())
+                .phone(user.getPhone())
                 .build();
 
         response.setData(userService.save(customer));
