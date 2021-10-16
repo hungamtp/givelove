@@ -18,6 +18,7 @@ public class AddTask {
     String desc;
     String gift;
     LocalDate deadline;
+    int quantity;
     Task.Mission type;
 
 }
