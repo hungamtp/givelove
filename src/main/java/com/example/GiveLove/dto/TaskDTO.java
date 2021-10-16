@@ -13,6 +13,7 @@ public class TaskDTO {
     private Long id;
     private String quantity;
     private String description;
+    private String receiver;
     private String gift;
     private Task.Mission type;
     private LocalDate createdDate;

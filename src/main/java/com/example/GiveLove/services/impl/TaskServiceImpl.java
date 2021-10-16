@@ -37,6 +37,7 @@ public class TaskServiceImpl implements TaskService {
                         .createdDate(LocalDate.now())
                         .status(false)
                         .quantity(task.getQuantity())
+                        .receiver(task.getReceiver())
                         .type(task.getType())
                         .gift(task.getGift())
                         .campaign(Campaign.builder().id(campaignId).build())

@@ -20,7 +20,7 @@ public class Task {
     @GeneratedValue
     private Long id;
     private String quantity;
-
+    private String receiver;
     private String description;
     private String gift;
     private Mission type;
