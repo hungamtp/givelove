@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class TaskDTO {
 
     private Long id;
-    private int quantity;
+    private String quantity;
     private String description;
     private String gift;
     private Task.Mission type;
