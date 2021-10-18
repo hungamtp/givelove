@@ -2,10 +2,7 @@ package com.example.GiveLove.services.impl;
 
 import com.example.GiveLove.converter.CampaignConverter;
 import com.example.GiveLove.converter.UserConverter;
-import com.example.GiveLove.dto.CampaignDTO;
-import com.example.GiveLove.dto.PageDTO;
-import com.example.GiveLove.dto.UpdateUserDTO;
-import com.example.GiveLove.dto.UserDTO;
+import com.example.GiveLove.dto.*;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Role;
 import com.example.GiveLove.entity.Users;
@@ -189,5 +186,17 @@ try{
         return userConverter.convertEntityToDTO(usersRepository.findById(userId).get());
     }
 
+    public void changePassword(ChangePasswordDTO changePasswordDTO){
+        Optional<Users> users =usersRepository.findById(changePasswordDTO.getUserId());
+
+        if(!users.isPresent()){
+            throw new IllegalStateException(ErrorCode.USER_NOT_FOUND);
+        }
+        else{
+            Users user = users.get();
+            user.setPassword(changePasswordDTO.getPassword());
+            usersRepository.save(user);
+        }
+    }
 
 }

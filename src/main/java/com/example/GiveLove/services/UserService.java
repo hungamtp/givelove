@@ -1,9 +1,6 @@
 package com.example.GiveLove.services;
 
-import com.example.GiveLove.dto.CampaignDTO;
-import com.example.GiveLove.dto.PageDTO;
-import com.example.GiveLove.dto.UpdateUserDTO;
-import com.example.GiveLove.dto.UserDTO;
+import com.example.GiveLove.dto.*;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Users;
 import org.springframework.data.domain.Pageable;
@@ -30,5 +27,5 @@ public interface UserService {
     List<CampaignDTO> getCampaignByDonator (Long userId);
     List<UserDTO> getAllDonatorInCampaign (Long campaignId);
     List<UserDTO> findByFullname(String fullname , Long roleId);
-
+    void changePassword(ChangePasswordDTO changePasswordDTO);
 }

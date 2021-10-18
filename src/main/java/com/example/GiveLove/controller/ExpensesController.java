@@ -22,7 +22,7 @@ public class ExpensesController {
     @PostMapping("/{campaignId}")
     @PreAuthorize("hasRole('Member')")
     public ResponseEntity<ResponseDTO> addExpenses(@RequestBody AddExpensesDTO expensesDTO ,
-                                                   @PathVariable Long campaignId){
+                                                   @PathVariable Long campaignId) throws DataFormatException {
         ResponseDTO response = new ResponseDTO();
         expensesService.addExpenses(expensesDTO , campaignId);
         response.setData(expensesDTO);

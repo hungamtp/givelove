@@ -1,6 +1,7 @@
 package com.example.GiveLove.controller;
 
 
+import com.example.GiveLove.dto.ChangePasswordDTO;
 import com.example.GiveLove.dto.ResponseDTO;
 import com.example.GiveLove.dto.authDTO.LoginDTO;
 import com.example.GiveLove.dto.authDTO.LoginResponseDTO;
@@ -117,5 +118,18 @@ public class AuthController {
         }
         return ResponseEntity.ok().body(response);
 
+    }
+
+
+    @PostMapping("/changePassword")
+    public ResponseEntity<ResponseDTO> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO){
+        ResponseDTO response = new ResponseDTO();
+
+        response.setData(changePasswordDTO);
+        changePasswordDTO.setPassword("{bcrypt}"+passwordEncoder.encode( changePasswordDTO.getPassword()));
+        userService.changePassword(changePasswordDTO);
+
+        response.setSuccessCode(SuccessCode.CHANGE_PASSWORD_SUCCESS);
+        return ResponseEntity.ok().body(response);
     }
 }
