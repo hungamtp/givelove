@@ -19,7 +19,8 @@ public class Task {
     @Id
     @GeneratedValue
     private Long id;
-    private String quantity;
+    private float quantity;
+    private float quantityRemain;
     private String description;
     private String gift;
     private Mission type;

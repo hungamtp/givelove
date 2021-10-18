@@ -29,7 +29,7 @@ public class ExpensesServiceImpl implements ExpensesService {
     private TaskRepository taskRepository;
     private ExpensesConverter expensesConverter;
 
-    public void addExpenses(AddExpensesDTO addExpensesDTO , Long campaignId){
+    public void addExpenses(AddExpensesDTO addExpensesDTO , Long campaignId) throws DataFormatException {
         ExpensesBlock expensesBlock = ExpensesBlock.builder()
                 .description(addExpensesDTO.getDescription())
                 .money(addExpensesDTO.getMoney())
@@ -53,8 +53,18 @@ public class ExpensesServiceImpl implements ExpensesService {
 
         expensesRepository.save(expensesBlock);
         var task = taskRepository.findById(addExpensesDTO.getTaskId()).get();
-        task.setStatus(true);
-        taskRepository.save(task);
+
+        if(task.getQuantityRemain() - addExpensesDTO.getQuantity() < 0){
+            throw new DataFormatException(ErrorCode.QUANTITY_NOT_ENOUGH);
+        }else if(task.getQuantityRemain() - addExpensesDTO.getQuantity() == 0){
+            task.setQuantityRemain(task.getQuantityRemain() - addExpensesDTO.getQuantity());
+            task.setStatus(true);
+            taskRepository.save(task);
+        }else{
+            task.setQuantityRemain(task.getQuantityRemain() - addExpensesDTO.getQuantity());
+            taskRepository.save(task);
+        }
+
 
 
 
