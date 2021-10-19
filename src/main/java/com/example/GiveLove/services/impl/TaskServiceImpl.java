@@ -38,6 +38,7 @@ public class TaskServiceImpl implements TaskService {
                         .status(false)
                         .unit(task.getUnit())
                         .quantity(task.getQuantity())
+                        .quantityRemain(task.getQuantityRemain())
                         .type(task.getType())
                         .gift(task.getGift())
                         .campaign(Campaign.builder().id(campaignId).build())
