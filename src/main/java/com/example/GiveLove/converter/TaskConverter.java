@@ -20,6 +20,7 @@ public class TaskConverter {
                 .gift(task.getGift())
                 .type(task.getType())
                 .quantity(task.getQuantity())
+                .unit(task.getUnit())
                 .quantityRemain(task.getQuantityRemain())
                 .deadline(task.getDeadline())
                 .build();

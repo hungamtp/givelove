@@ -17,5 +17,7 @@ public class ExpensesDTO {
     private Long money;
     private  LocalDateTime dateTime;
     private String image;
+    private String location;
+
 
 }

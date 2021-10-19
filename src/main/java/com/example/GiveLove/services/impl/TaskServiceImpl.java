@@ -36,6 +36,7 @@ public class TaskServiceImpl implements TaskService {
                         .deadline(task.getDeadline())
                         .createdDate(LocalDate.now())
                         .status(false)
+                        .unit(task.getUnit())
                         .quantity(task.getQuantity())
                         .type(task.getType())
                         .gift(task.getGift())

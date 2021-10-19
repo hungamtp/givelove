@@ -35,6 +35,7 @@ public class ExpensesServiceImpl implements ExpensesService {
                 .money(addExpensesDTO.getMoney())
                 .date(LocalDateTime.now())
                 .image(addExpensesDTO.getImage())
+                .location(addExpensesDTO.getLocation())
                 .campaign(Campaign.builder().id(campaignId).build())
                 .build();
 

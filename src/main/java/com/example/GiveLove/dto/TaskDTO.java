@@ -14,6 +14,7 @@ public class TaskDTO {
     private float quantity;
     private float quantityRemain;
     private String description;
+    private String unit;
     private String gift;
     private Task.Mission type;
     private LocalDate createdDate;

@@ -17,6 +17,7 @@ public class AddTask {
 
     String desc;
     String gift;
+    String unit;
     LocalDate deadline;
     float quantity;
     float quantityRemain;

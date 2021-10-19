@@ -13,6 +13,7 @@ public class ExpensesConverter {
                 .money(expenses.getMoney())
                 .description(expenses.getDescription())
                 .image(expenses.getImage())
+                .location(expenses.getLocation())
                 .build();
     }
 }
