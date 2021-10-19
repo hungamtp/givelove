@@ -23,6 +23,7 @@ public class Task {
     private float quantityRemain;
     private String description;
     private String gift;
+    private String unit;
     private Mission type;
     private LocalDate createdDate;
     private LocalDate deadline;

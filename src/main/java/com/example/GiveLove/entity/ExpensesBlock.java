@@ -28,6 +28,7 @@ public class ExpensesBlock {
     private int nonce;
     private Long money;
     private String description;
+    private String location;
     private String image;
     private LocalDateTime date;
 
