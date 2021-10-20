@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -21,6 +20,7 @@ public class AddTask {
     LocalDate deadline;
     float quantity;
     float quantityRemain;
+    Long memberId;
     Task.Mission type;
 
 }
