@@ -29,6 +29,8 @@ public class ExpensesBlock {
     private Long money;
     private String description;
     private String location;
+    private String unit;
+    private String giftname;
     private String image;
     private LocalDateTime date;
 

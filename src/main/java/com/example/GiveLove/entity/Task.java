@@ -31,6 +31,11 @@ public class Task {
     @ManyToOne
     private Campaign campaign;
 
+    @ManyToOne
+    private Users member;
+
+
+
     public enum Mission{
         buy , give
     }

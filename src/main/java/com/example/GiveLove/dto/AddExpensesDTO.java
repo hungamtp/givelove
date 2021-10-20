@@ -16,5 +16,8 @@ public class AddExpensesDTO {
     String image;
     String location;
     Long taskId;
+    String unit;
+    String giftname;
     float quantity;
+
 }

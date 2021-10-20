@@ -13,11 +13,11 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class ExpensesDTO {
-   private String description;
+    private String description;
     private Long money;
-    private  LocalDateTime dateTime;
+    private LocalDateTime dateTime;
     private String image;
     private String location;
-
-
+    private String unit;
+    private String giftname;
 }

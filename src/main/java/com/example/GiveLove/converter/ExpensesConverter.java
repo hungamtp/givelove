@@ -14,6 +14,8 @@ public class ExpensesConverter {
                 .description(expenses.getDescription())
                 .image(expenses.getImage())
                 .location(expenses.getLocation())
+                .unit(expenses.getUnit())
+                .giftname(expenses.getGiftname())
                 .build();
     }
 }
