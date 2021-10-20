@@ -2,6 +2,7 @@ package com.example.GiveLove.repository;
 
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Task;
+import com.example.GiveLove.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +12,5 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task , Long> {
 
     List<Task> findByCampaign (Campaign campaign);
-    List<Task> findByCampaignAndStatusIsFalse (Campaign campaign);
+    List<Task> findByCampaignAndMemberAndStatusIsFalse (Campaign campaign ,Users member);
 }

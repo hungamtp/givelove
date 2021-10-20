@@ -30,8 +30,8 @@ public class TaskServiceImpl implements TaskService {
     public List<TaskDTO> getAllTask(Long campaignId , String username) {
 
         Users user =   usersRepository.findByUsername(username);
-
-        return taskConverter.convertEntitiesToDTOs(user.getTasks());
+        Campaign campaign = Campaign.builder().id(campaignId).build();
+        return taskConverter.convertEntitiesToDTOs(taskRepository.findByCampaignAndMemberAndStatusIsFalse(campaign , user));
     }
 
     @Override
