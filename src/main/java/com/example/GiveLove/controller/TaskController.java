@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Base64;
+
 @RestController
 @RequestMapping("/task")
 @AllArgsConstructor
@@ -20,9 +23,17 @@ public class TaskController {
 
     @GetMapping
     @PreAuthorize("hasAnyRole('Manager','Member')")
-    public ResponseEntity<ResponseDTO> getAllTask(@RequestParam Long campaignId){
+    public ResponseEntity<ResponseDTO> getAllTask(HttpServletRequest req,@RequestParam Long campaignId){
+
         ResponseDTO response = new ResponseDTO();
-        response.setData(taskService.getAllTask(campaignId));
+
+        String jwt = req.getHeader("Authorization").substring(7, req.getHeader("Authorization").length());
+        Base64.Decoder decoder = Base64.getDecoder();
+        String payload = new String(decoder.decode(jwt.split("\\.")[1]));
+        String sub = payload.split(",")[0];
+        String username = sub.substring(8 ,sub.length()-1);
+
+        response.setData(taskService.getAllTask(campaignId , username));
         response.setSuccessCode(SuccessCode.GET_ALL_CAMPAIGN_SUCCESS);
         return ResponseEntity.ok().body(response);
     }

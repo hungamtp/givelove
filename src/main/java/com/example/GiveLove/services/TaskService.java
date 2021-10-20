@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TaskService {
 
-    List<TaskDTO> getAllTask(Long campaignId);
+    List<TaskDTO> getAllTask(Long campaignId , String username);
     TaskDTO addTask(AddTask task , Long campaignId);
     void finishTask(Long taskId);
     void deleteTask(Long taskId);

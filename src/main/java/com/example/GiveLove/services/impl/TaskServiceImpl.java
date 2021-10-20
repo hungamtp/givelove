@@ -5,7 +5,9 @@ import com.example.GiveLove.dto.AddTask;
 import com.example.GiveLove.dto.TaskDTO;
 import com.example.GiveLove.entity.Campaign;
 import com.example.GiveLove.entity.Task;
+import com.example.GiveLove.entity.Users;
 import com.example.GiveLove.repository.TaskRepository;
+import com.example.GiveLove.repository.UsersRepository;
 import com.example.GiveLove.responseCode.ErrorCode;
 import com.example.GiveLove.services.TaskService;
 import lombok.AllArgsConstructor;
@@ -14,18 +16,22 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class TaskServiceImpl implements TaskService {
 
     private TaskRepository taskRepository;
+    private UsersRepository usersRepository;
     private TaskConverter taskConverter;
 
     @Override
-    public List<TaskDTO> getAllTask(Long campaignId) {
-        return taskConverter.convertEntitiesToDTOs(
-                taskRepository.findByCampaign(Campaign.builder().id(campaignId).build()));
+    public List<TaskDTO> getAllTask(Long campaignId , String username) {
+
+        Users user =   usersRepository.findByUsername(username);
+
+        return taskConverter.convertEntitiesToDTOs(user.getTasks());
     }
 
     @Override
