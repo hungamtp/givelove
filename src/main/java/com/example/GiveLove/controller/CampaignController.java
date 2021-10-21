@@ -32,7 +32,7 @@ public class CampaignController {
     private UserService userService;
 
     @GetMapping
-    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasAnyRole('Admin' , 'Donator')")
     public ResponseEntity<ResponseDTO> getAllCampaign(@RequestParam("pageNum") int page,
                                                       @RequestParam("pageSize") int size ,
                                                       @RequestParam("sort") String sort,
