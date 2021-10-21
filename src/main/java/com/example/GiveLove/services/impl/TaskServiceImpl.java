@@ -32,9 +32,9 @@ public class TaskServiceImpl implements TaskService {
         Users user =   usersRepository.findByUsername(username);
         Campaign campaign = Campaign.builder().id(campaignId).build();
         if(user.getRole().getName().equals("Member")){
-            return taskConverter.convertEntitiesToDTOs(taskRepository.findByCampaignAndMemberAndStatusIsFalse(campaign , user));
+            return taskConverter.convertEntitiesToDTOs(taskRepository.findByCampaignAndMember(campaign , user));
         }else{
-            return taskConverter.convertEntitiesToDTOs(taskRepository.findByCampaignAndStatusIsFalse(campaign));
+            return taskConverter.convertEntitiesToDTOs(taskRepository.findByCampaign(campaign));
         }
 
 

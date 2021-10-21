@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task , Long> {
 
+    List<Task> findByCampaignAndMember (Campaign campaign ,Users member);
     List<Task> findByCampaign (Campaign campaign);
-    List<Task> findByCampaignAndMemberAndStatusIsFalse (Campaign campaign ,Users member);
-    List<Task> findByCampaignAndStatusIsFalse (Campaign campaign);
 }
