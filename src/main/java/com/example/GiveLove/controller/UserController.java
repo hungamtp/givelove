@@ -100,7 +100,7 @@ public class UserController {
     }
 
     @GetMapping("usersInCampaign/{campaignId}")
-    @PreAuthorize("hasRole('Manager' )")
+    @PreAuthorize("hasAnyRole('Manager' , 'Admin' , 'Donator' )")
     public ResponseEntity<ResponseDTO> getAllUserInCampaign(@PathVariable Long campaignId) throws DataFormatException {
 
         ResponseDTO response = new ResponseDTO();
