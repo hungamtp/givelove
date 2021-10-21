@@ -16,6 +16,7 @@ public class TaskDTO {
     private String description;
     private String unit;
     private String gift;
+    private String member;
     private Task.Mission type;
     private LocalDate createdDate;
     private LocalDate deadline;

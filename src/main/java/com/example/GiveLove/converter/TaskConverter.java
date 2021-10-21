@@ -21,6 +21,7 @@ public class TaskConverter {
                 .type(task.getType())
                 .quantity(task.getQuantity())
                 .unit(task.getUnit())
+                .member(task.getMember().getFullName())
                 .quantityRemain(task.getQuantityRemain())
                 .deadline(task.getDeadline())
                 .build();
