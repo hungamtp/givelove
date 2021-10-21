@@ -50,7 +50,7 @@ public class TaskServiceImpl implements TaskService {
                         .status(false)
                         .unit(task.getUnit())
                         .quantity(task.getQuantity())
-                        .quantityRemain(task.getQuantityRemain())
+                        .quantityRemain(task.getQuantity())
                         .type(task.getType())
                         .gift(task.getGift())
                         .member(Users.builder().id(task.getMemberId()).build())

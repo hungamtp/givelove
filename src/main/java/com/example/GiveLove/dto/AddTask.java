@@ -19,7 +19,6 @@ public class AddTask {
     String unit;
     LocalDate deadline;
     float quantity;
-    float quantityRemain;
     Long memberId;
     Task.Mission type;
 
