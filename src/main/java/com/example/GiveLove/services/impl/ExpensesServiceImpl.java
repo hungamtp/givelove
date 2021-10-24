@@ -43,7 +43,7 @@ public class ExpensesServiceImpl implements ExpensesService {
 
         expensesBlock.setHash(expensesBlock.calculateBlockHash());
 
-        if(expensesRepository.findAll().size() == 0){
+        if(expensesRepository.findAllByCampaign(Campaign.builder().id(campaignId).build()).size() == 0){
             expensesBlock.setPreviousHash("0");
         }
         else{
@@ -67,9 +67,6 @@ public class ExpensesServiceImpl implements ExpensesService {
             task.setQuantityRemain(task.getQuantityRemain() - addExpensesDTO.getQuantity());
             taskRepository.save(task);
         }
-
-
-
 
     }
 

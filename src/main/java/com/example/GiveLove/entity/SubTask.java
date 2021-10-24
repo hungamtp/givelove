@@ -21,6 +21,7 @@ public class SubTask {
     private Long id;
 
     private float quantity;
+    private float money;
     private String description;
     private String image;
     private LocalDate createdDate;
