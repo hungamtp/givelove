@@ -19,7 +19,7 @@ public class ExpensesController {
 
     private ExpensesService expensesService;
 
-    @PostMapping("/{campaignId}")
+    @PostMapping("/{subtaskId}")
     @PreAuthorize("hasRole('Member')")
     public ResponseEntity<ResponseDTO> approve(@RequestParam Long  subtaskId ,
                                                    @PathVariable Long campaignId) throws DataFormatException {
