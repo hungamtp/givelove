@@ -21,11 +21,11 @@ public class ExpensesController {
 
     @PostMapping("/{campaignId}")
     @PreAuthorize("hasRole('Member')")
-    public ResponseEntity<ResponseDTO> addExpenses(@RequestBody AddExpensesDTO expensesDTO ,
+    public ResponseEntity<ResponseDTO> approve(@RequestParam Long  subtaskId ,
                                                    @PathVariable Long campaignId) throws DataFormatException {
         ResponseDTO response = new ResponseDTO();
-        expensesService.addExpenses(expensesDTO , campaignId);
-        response.setData(expensesDTO);
+        expensesService.addExpenses(subtaskId , campaignId);
+
         response.setSuccessCode(SuccessCode.ADD_EXPENSES_SUCCESS);
         return ResponseEntity.ok().body(response);
     }
