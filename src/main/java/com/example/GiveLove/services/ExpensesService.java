@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.zip.DataFormatException;
 
 public interface ExpensesService {
-    void addExpenses(AddExpensesDTO addExpensesDTO , Long campaignId) throws DataFormatException;
+    void addExpenses(Long subtaskId , Long campaignId) throws DataFormatException;
     List<ExpensesDTO> getAllExpenses(Long campaignId) throws DataFormatException;
 }
