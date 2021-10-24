@@ -17,6 +17,7 @@ public class SubTaskDTO {
 
     private Long id;
     private float quantity;
+    private float money;
     private String description;
     private String giftname;
     private String image;

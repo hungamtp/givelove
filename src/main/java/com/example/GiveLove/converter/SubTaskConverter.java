@@ -21,6 +21,7 @@ public class SubTaskConverter {
                 .isApproved(subTask.isApproved())
                 .member(subTask.getTask().getMember().getFullName())
                 .type(subTask.getTask().getType())
+                .money(subTask.getMoney())
                 .location(subTask.getTask().getCampaign().getLocation())
                 .giftname(subTask.getTask().getGift())
                 .build();
