@@ -22,6 +22,7 @@ public class SubTaskConverter {
                 .member(subTask.getTask().getMember().getFullName())
                 .type(subTask.getTask().getType())
                 .location(subTask.getTask().getCampaign().getLocation())
+                .giftname(subTask.getTask().getGift())
                 .build();
     }
 

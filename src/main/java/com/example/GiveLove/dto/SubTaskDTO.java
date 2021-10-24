@@ -18,6 +18,7 @@ public class SubTaskDTO {
     private Long id;
     private float quantity;
     private String description;
+    private String giftname;
     private String image;
     private String location;
     private Task.Mission type;
