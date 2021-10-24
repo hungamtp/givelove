@@ -20,6 +20,8 @@ public class SubTaskConverter {
                 .createdDate(subTask.getCreatedDate())
                 .isApproved(subTask.isApproved())
                 .member(subTask.getTask().getMember().getFullName())
+                .type(subTask.getTask().getType())
+                .location(subTask.getTask().getCampaign().getLocation())
                 .build();
     }
 

@@ -19,6 +19,8 @@ public class SubTaskDTO {
     private float quantity;
     private String description;
     private String image;
+    private String location;
+    private Task.Mission type;
     private LocalDate createdDate;
     private boolean isApproved;
     private String member;
