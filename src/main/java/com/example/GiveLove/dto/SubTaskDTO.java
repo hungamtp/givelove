@@ -21,6 +21,7 @@ public class SubTaskDTO {
     private String description;
     private String giftname;
     private String image;
+    private String unit;
     private String location;
     private Task.Mission type;
     private LocalDate createdDate;
