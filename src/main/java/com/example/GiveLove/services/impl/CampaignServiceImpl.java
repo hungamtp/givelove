@@ -94,7 +94,7 @@ public class CampaignServiceImpl implements CampaignService {
                 .secretaries(Users.builder().id(managerId).build())
                 .money(campaignDTO.getTotal())
                 .location(campaignDTO.getLocation())
-                .state("Still")
+                .state("true")
                 .build();
 
         campaignRepository.save(campaign);

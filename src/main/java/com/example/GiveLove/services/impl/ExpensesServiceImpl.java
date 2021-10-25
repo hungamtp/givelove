@@ -42,8 +42,6 @@ public class ExpensesServiceImpl implements ExpensesService {
         }else {
             subTask = subTaskOptional.get();
 
-
-
             ExpensesBlock expensesBlock = ExpensesBlock.builder()
                     .description(subTask.getDescription())
                     .money((long) subTask.getMoney())
